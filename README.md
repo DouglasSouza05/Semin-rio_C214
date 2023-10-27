@@ -57,9 +57,9 @@ https://dotnet.microsoft.com/download
 # Criando o projeto
 
 1. No prompt de comando, digite: dotnet new console -o ./CsharpProjects/TestProject e pressione a tecla Enter.
-    O driver: dotnet neste exemplo.
-    O comando: new console neste exemplo.
-    Os argumentos de comando: -o ./CsharpProjects/TestProject neste exemplo.
+    - O driver: dotnet neste exemplo.
+    - O comando: new console neste exemplo.
+    - Os argumentos de comando: -o ./CsharpProjects/TestProject neste exemplo.
 
 Observação
 
