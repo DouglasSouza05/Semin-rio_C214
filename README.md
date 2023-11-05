@@ -1,3 +1,5 @@
+[![build](https://github.com/DouglasSouza05/Seminario_C214/actions/workflows/workflow.yml/badge.svg)](https://github.com/DouglasSouza05/Seminario_C214/actions/workflows/workflow.yml)
+
 # Seminário_C214
 
 Seminário da Matéria de Engenharia de Software
