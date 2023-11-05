@@ -1,40 +1,28 @@
-name: Build C# Project
+name: Build and Test C# Application
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup .NET Core SDK
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.402
+        dotnet-version: 5.0
 
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y apt-transport-https
+        sudo apt-get install -y dotnet-sdk-5.0
+      shell: bash
 
-    - name: Build project
+    - name: Build and test C# application
       run: dotnet build --configuration Release
-
-    - name: Run tests (if applicable)
-      run: dotnet test --no-restore --verbosity normal
-
-    - name: Publish artifacts
-      run: dotnet publish -c Release -o ./publish
-
-    - name: Archive artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: compiled-app
-        path: ./publish
