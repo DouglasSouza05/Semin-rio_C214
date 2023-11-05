@@ -1,5 +1,5 @@
 [TestClass]
-public class TestesConverter
+public class TesteConverter
 {
     [TestMethod]
     public void TestCelsiusToFahrenheitConversion()
