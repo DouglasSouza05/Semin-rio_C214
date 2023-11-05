@@ -1,4 +1,6 @@
-public class UnitsConverter
+namespace Aplication{
+
+    public class UnitsConverter
 {
     public double CelsiusToFahrenheit(double celsius)
     {
@@ -100,4 +102,6 @@ public class UnitsConverter
     {
         return pascals / 6895;
     }
+}
+
 }
