@@ -5,9 +5,19 @@ public class UnitsConverter
         return ((celsius * 9) / 5) + 32;
     }
 
+    public double MetersToFeet(double meters)
+    {
+        return meters * 3.281;
+    }
+
     public double MetersToKilometers(double meters)
     {
         return meters / 1000;
+    }
+
+    public double KilometersToMiles(double kilometers)
+    {
+        return kilometers / 1.609;
     }
 
     public double MetersPerSecondToKilometersPerHour(double metersPerSecond)
@@ -15,9 +25,19 @@ public class UnitsConverter
         return metersPerSecond * 3.6;
     }
 
+    public double KilometersPerHourToMetersPerSecond(double kilometersPerHour)
+    {
+        return kilometersPerHour / 3.6;
+    }
+
     public double GramsToKilograms(double grams)
     {
         return grams / 1000;
+    }
+
+    public double KilogramsToPounds(double kilograms)
+    {
+        return kilograms * 2.205;
     }
 
     public double SecondsToHours(double seconds)
@@ -36,33 +56,13 @@ public class UnitsConverter
         return celsius + 273.15;
     }
 
-    public double KilometersToMiles(double kilometers)
-    {
-        return kilometers * 0.621371;
-    }
-
-    public double KilometersPerHourToMetersPerSecond(double kilometersPerHour)
-    {
-        return kilometersPerHour / 3.6;
-    }
-
-    public double KilogramsToPounds(double kilograms)
-    {
-        return kilograms * 2.20462;
-    }
-
-    public double MetersToFeet(double meters)
-    {
-        return meters * 3.28084;
-    }
-
     public double LitersToGallons(double liters)
     {
-        return liters * 0.264172;
+        return liters / 3.785;
     }
 
     public double PascalsToPSI(double pascals)
     {
-        return pascals * 0.00014503773773375;
+        return pascals / 6895;
     }
 }
