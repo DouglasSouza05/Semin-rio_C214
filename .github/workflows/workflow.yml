@@ -30,6 +30,8 @@ jobs:
       - name: Install dependencies
         run: |
             ls
+            cd ConversorDeUnidades
+            ls
             dotnet restore
       
       - name: Build
