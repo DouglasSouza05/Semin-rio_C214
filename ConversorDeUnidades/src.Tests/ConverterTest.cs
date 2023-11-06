@@ -3,7 +3,7 @@ namespace UnitTest.Aplication{
     [TestClass]
     public class UnitsConverterTest
     {
-        # Teste 1:
+
         [TestMethod]
         public void TestCelsiusToFahrenheitConversion()
         {
@@ -21,7 +21,7 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        # Teste 2:
+
         [TestMethod]
         public void TestFahrenheitToCelsiusConversion()
         {
@@ -39,7 +39,7 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        # Teste 3:
+
         [TestMethod]
         public void TestCelsiustToKelvinConversion()
         {
@@ -57,7 +57,7 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedKelvin, kelvin, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        # Teste 4:
+
         [TestMethod]
         public void TestKelvintToCelsiusConversion()
         {
