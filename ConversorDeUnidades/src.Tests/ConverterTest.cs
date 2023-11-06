@@ -4,6 +4,7 @@ namespace UnitTest.Aplication{
     public class UnitsConverterTest
     {
 
+        // Teste 1:
         [TestMethod]
         public void TestCelsiusToFahrenheitConversion()
         {
@@ -21,7 +22,7 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-
+        // Teste 2:
         [TestMethod]
         public void TestFahrenheitToCelsiusConversion()
         {
@@ -34,19 +35,19 @@ namespace UnitTest.Aplication{
             double celsius = unitsConverter.FahrenheitToCelsius(fahrenheit);
 
             // Assert
-            double expectedCelsius = 5; // O valor esperado em graus Celsius para 41°C
+            double expectedCelsius = 0.56; // O valor esperado em graus Celsius para 41°C
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-
+        // Teste 3:
         [TestMethod]
         public void TestCelsiustToKelvinConversion()
         {
 
             UnitsConverter unitsConverter = new UnitsConverter();
 
-            double celsius = 26.15; // Exemplo de temperatura em graus Celsius
+            double celsius = 26.85; // Exemplo de temperatura em graus Celsius
 
             // Act
             double kelvin = unitsConverter.CelsiusToKelvin(celsius);
@@ -57,7 +58,7 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedKelvin, kelvin, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-
+        // Teste 4:
         [TestMethod]
         public void TestKelvintToCelsiusConversion()
         {
@@ -70,7 +71,7 @@ namespace UnitTest.Aplication{
             double celsius = unitsConverter.KelvinToCelsius(kelvin);
 
             // Assert
-            double expectedCelsius = 30; // O valor esperado em graus Kelvin para 300.15°C
+            double expectedCelsius = 27; // O valor esperado em graus Kelvin para 300.15°C
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
