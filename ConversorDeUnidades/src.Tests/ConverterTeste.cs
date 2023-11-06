@@ -9,7 +9,7 @@ namespace UnitTest.Aplication{
 
             UnitsConverter unitsConverter = new UnitsConverter();
 
-            double celsius = 50; // Exemplo de temperatura em graus Celsius
+            double celsius = 25; // Exemplo de temperatura em graus Celsius
 
             // Act
             double fahrenheit = unitsConverter.CelsiusToFahrenheit(celsius);
