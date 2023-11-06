@@ -1,7 +1,7 @@
 namespace UnitTest.Aplication{
 
     [TestClass]
-    public class TesteConverter
+    public class UnitsConverterTest
     {
         [TestMethod]
         public void TestCelsiusToFahrenheitConversion()
