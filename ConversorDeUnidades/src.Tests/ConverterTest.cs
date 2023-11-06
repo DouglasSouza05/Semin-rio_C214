@@ -31,7 +31,7 @@ namespace UnitTest.Aplication{
             double fahrenheit = 41; // Exemplo de temperatura em graus Fahrenheit
 
             // Act
-            double celsius = unitsConverter.FahrenheitToCelsiusTo(fahrenheit);
+            double celsius = unitsConverter.FahrenheitToCelsius(fahrenheit);
 
             // Assert
             double expectedCelsius = 5; // O valor esperado em graus Celsius para 41°C
