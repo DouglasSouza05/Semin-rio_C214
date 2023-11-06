@@ -56,10 +56,16 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Install dependencies
-        run: dotnet restore
+        run: |
+            cd ConversorDeUnidades
+            dotnet restore
       
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: |
+            cd ConversorDeUnidades
+            dotnet build --configuration Release --no-restore
 
       - name: Run Tests
-        run: dotnet test --no-restore --verbosity normal
+        run: |
+            cd ConversorDeUnidades
+            dotnet test --no-restore --verbosity normal
