@@ -1,20 +1,24 @@
-[TestClass]
-public class TesteConverter
-{
-    [TestMethod]
-    public void TestCelsiusToFahrenheitConversion()
+namespace UnitTest.Aplication{
+
+    [TestClass]
+    public class TesteConverter
     {
+        [TestMethod]
+        public void TestCelsiusToFahrenheitConversion()
+        {
 
-        UnitsConverter unitsConverter = new UnitsConverter();
+            UnitsConverter unitsConverter = new UnitsConverter();
 
-        double celsius = 50; // Exemplo de temperatura em graus Celsius
+            double celsius = 50; // Exemplo de temperatura em graus Celsius
 
-        // Act
-        double fahrenheit = unitsConverter.CelsiusToFahrenheit(celsius);
+            // Act
+            double fahrenheit = unitsConverter.CelsiusToFahrenheit(celsius);
 
-        // Assert
-        double expectedFahrenheit = 77; // O valor esperado em graus Fahrenheit para 25°C
+            // Assert
+            double expectedFahrenheit = 77; // O valor esperado em graus Fahrenheit para 25°C
 
-        Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+            Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
     }
+
 }
