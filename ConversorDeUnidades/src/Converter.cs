@@ -92,30 +92,41 @@ namespace Aplication{
             return seconds / 3600;
         }
 
+        // Fórmula 16:
         public double HoursToSeconds(double hours)
         {
             return hours * 3600;
         }
 
+        // Fórmula 17:
         public double DaysToMonths(double days)
         {
             // Conversão aproximada
             return days / 30.417;
         }
 
+        // Fórmula 18:
         public double LitersToGallons(double liters)
         {
             return liters / 3.785;
         }
 
+        // Fórmula 19:
         public double GallonsToLiters(double gallons)
         {
             return gallons * 3.785;
         }
 
+        // Fórmula 20:
         public double PascalsToPSI(double pascals)
         {
             return pascals / 6895;
+        }
+
+        // Fórmula 21:
+        public double PSIToPascals(double psi)
+        {
+            return psi * 6895;
         }
     }
 }

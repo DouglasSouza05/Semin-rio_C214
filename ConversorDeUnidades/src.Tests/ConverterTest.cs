@@ -274,6 +274,114 @@ namespace UnitTest.Aplication{
 
             Assert.AreEqual(expectedhours, hours, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
+
+        // Teste 16:
+        [TestMethod]
+        public void TestHoursToSecondsConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double hours = 100; // Exemplo de kilômetros
+
+            // Act
+            double seconds = unitsConverter.HoursToSeconds(hours);
+
+            // Assert
+            double expectedseconds = 360000; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedseconds, seconds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 17:
+        [TestMethod]
+        public void TestDaysToMonthsConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double days = 900; // Exemplo de dias
+
+            // Act
+            double months = unitsConverter.DaysToMonths(days);
+
+            // Assert
+            double expectedmonths = 29.58871684; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedmonths, months, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 18:
+        [TestMethod]
+        public void TestLitersToGallonsConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double liters = 1890; // Exemplo de dias
+
+            // Act
+            double gallons = unitsConverter.LitersToGallons(liters);
+
+            // Assert
+            double expectedgallons = 499.339498; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedgallons, gallons, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 19:
+        [TestMethod]
+        public void TestGallonsToLitersConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double gallons = 1670; // Exemplo de galões
+
+            // Act
+            double liters = unitsConverter.GallonsToLiters(gallons);
+
+            // Assert
+            double expectedliters = 6320.95; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedliters, liters, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 20:
+        [TestMethod]
+        public void TestPascalsToPSIConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double pascals = 9870; // Exemplo de pascals
+
+            // Act
+            double psi = unitsConverter.PascalsToPSI(pascals);
+
+            // Assert
+            double expectedpsi = 1.431472081; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedpsi, psi, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 21:
+        [TestMethod]
+        public void TestPSIToPascalsConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double psi = 850; // Exemplo de pascals
+
+            // Act
+            double pascals = unitsConverter.PSIToPascals(psi);
+
+            // Assert
+            double expectedpascals = 5860750; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedpascals, pascals, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
     }
 
 }
