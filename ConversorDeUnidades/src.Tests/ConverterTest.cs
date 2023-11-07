@@ -108,7 +108,7 @@ namespace UnitTest.Aplication{
             double kilometer = unitsConverter.MetersToFeet(meters);
 
             // Assert
-            double expectedKilometer = 3; // O valor esperado em metros em 3000 metros
+            double expectedKilometer = 9843; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedKilometer, kilometer, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }  
