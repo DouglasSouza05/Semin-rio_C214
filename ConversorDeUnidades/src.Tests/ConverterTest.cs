@@ -105,10 +105,10 @@ namespace UnitTest.Aplication{
             double meters = 3000; // Exemplo de metros
 
             // Act
-            double kilometer = unitsConverter.MetersToFeet(meters);
+            double kilometer = unitsConverter.MetersToKilometers(meters);
 
             // Assert
-            double expectedKilometer = 9843; // O valor esperado em metros em 3000 metros
+            double expectedKilometer = 3; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedKilometer, kilometer, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }  
@@ -120,13 +120,13 @@ namespace UnitTest.Aplication{
 
             UnitsConverter unitsConverter = new UnitsConverter();
 
-            double kilometers = 9843; // Exemplo de metros
+            double kilometers = 3; // Exemplo de metros
 
             // Act
-            double meter = unitsConverter.MetersToFeet(kilometers);
+            double meter = unitsConverter.KilometersToMeters(kilometers);
 
             // Assert
-            double expectedMeter = 32294.883; // O valor esperado em metros em 3000 metros
+            double expectedMeter = 3000; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedMeter, meter, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
@@ -141,10 +141,10 @@ namespace UnitTest.Aplication{
             double meters = 1609; // Exemplo de metros
 
             // Act
-            double miles = unitsConverter.MetersToFeet(meters);
+            double miles = unitsConverter.MetersToMiles(meters);
 
             // Assert
-            double expectedMiles = 5279.129; // O valor esperado em metros em 3000 metros
+            double expectedMiles = 1 // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         } 
@@ -159,13 +159,67 @@ namespace UnitTest.Aplication{
             double kilometers = 1609; // Exemplo de kilômetros
 
             // Act
-            double miles = unitsConverter.MetersToFeet(kilometers);
+            double miles = unitsConverter.KilometersToMiles(kilometers);
 
             // Assert
-            double expectedMiles = 5279.129; // O valor esperado em metros em 3000 metros
+            double expectedMiles = 1000; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 10:
+        [TestMethod]
+        public void TestMeterspersecondToKilometersPerHourConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double meterspersecond = 1600; // Exemplo de kilômetros
+
+            // Act
+            double kilometersperhour = unitsConverter.MetersPerSecondToKilometersPerHour(meterspersecond);
+
+            // Assert
+            double expectedKilometersperhour = 5760; // O valor esperado em metros por seguno 1600
+
+            Assert.AreEqual(expectedKilometersperhour, kilometersperhour, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 11:
+        [TestMethod]
+        public void TestKilometersPerHourToMetersPerSecondConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double kilometerspersecond = 3600; // Exemplo de kilômetros
+
+            // Act
+            double meterspersecond = unitsConverter.KilometersPerHourToMetersPerSecond(kilometerspersecond);
+
+            // Assert
+            double expectedMeterspersecond = 1000; // O valor esperado em metros por seguno 1600
+
+            Assert.AreEqual(expectedMeterspersecond, meterspersecond, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         } 
+
+        // Teste 12:
+        [TestMethod]
+        public void TestGramsToKilogramsConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double grams = 5000; // Exemplo de kilômetros
+
+            // Act
+            double kilograms = unitsConverter.KilometersPerHourToMetersPerSecond(grams);
+
+            // Assert
+            double expectedKilograms = 5 // O valor esperado em metros por seguno 1600
+
+            Assert.AreEqual(expectedKilograms, kilograms, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
     }
 
 }

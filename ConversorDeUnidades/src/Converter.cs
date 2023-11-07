@@ -2,61 +2,73 @@ namespace Aplication{
 
     public class UnitsConverter
     {
+        // Fórmula 1:
         public double CelsiusToFahrenheit(double celsius)
         {
             return ((celsius * 9) / 5) + 32;
         }
 
+        // Fórmula 2:
         public double FahrenheitToCelsius(double fahrenheit)
         {
             return (fahrenheit - 32) * (5/9);
         }
 
+        // Fórmula 3:
         public double CelsiusToKelvin(double celsius)
         {
             return celsius + 273.15;
         }
     
+        // Fórmula 4:
         public double KelvinToCelsius(double kelvin)
         {
             return kelvin - 273.15;
         }
 
+        // Fórmula 5:
         public double MetersToFeet(double meters)
         {
             return meters * 3.281;
         }
 
+        // Fórmula 6:
         public double MetersToKilometers(double meters)
         {
             return meters / 1000;
         }
 
+        // Fórmula 7:
         public double KilometersToMeters(double kilometers)
         {
             return kilometers * 1000;
         }
 
+        // Fórmula 8:
         public double MetersToMiles(double meters)
         {
             return meters / 1609;
         }
 
+        // Fórmula 9:
         public double KilometersToMiles(double kilometers)
         {
             return kilometers / 1.609;
         }
 
+        // Fórmula 10:
         public double MetersPerSecondToKilometersPerHour(double metersPerSecond)
         {
             return metersPerSecond * 3.6;
         }
 
+        // Fórmula 11:
         public double KilometersPerHourToMetersPerSecond(double kilometersPerHour)
         {
             return kilometersPerHour / 3.6;
         }
 
+        // Fórmula 12:
         public double GramsToKilograms(double grams)
         {
             return grams / 1000;
