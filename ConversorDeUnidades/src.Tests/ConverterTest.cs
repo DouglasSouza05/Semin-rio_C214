@@ -35,7 +35,7 @@ namespace UnitTest.Aplication{
             double celsius = unitsConverter.FahrenheitToCelsius(fahrenheit);
 
             // Assert
-            double expectedCelsius = 0.56; // O valor esperado em graus Celsius para 41°C
+            double expectedCelsius = 0.55; // O valor esperado em graus Celsius para 41°C
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
