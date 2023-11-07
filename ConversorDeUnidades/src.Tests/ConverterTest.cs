@@ -213,10 +213,10 @@ namespace UnitTest.Aplication{
             double grams = 5000; // Exemplo de kilômetros
 
             // Act
-            double kilograms = unitsConverter.KilometersPerHourToMetersPerSecond(grams);
+            double kilograms = unitsConverter.GramsToKilograms(grams);
 
             // Assert
-            double expectedKilograms = 1388.888888888889; // O valor esperado em metros por seguno 1600
+            double expectedKilograms = 5; // O valor esperado em metros por seguno 1600
 
             Assert.AreEqual(expectedKilograms, kilograms, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
