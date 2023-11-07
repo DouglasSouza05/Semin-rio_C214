@@ -39,7 +39,7 @@ namespace UnitTest.Aplication{
             double expectedCelsius = 0.556; // O valor esperado em graus Celsius para 41°C
 
             // Convertendo um resultado para decimal e conservando para três casas decimais
-            Round(ToDecimal(celsius), 3)
+          #  Round(ToDecimal(celsius), 3)
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
