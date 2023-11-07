@@ -220,6 +220,60 @@ namespace UnitTest.Aplication{
 
             Assert.AreEqual(expectedKilograms, kilograms, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
+
+        // Teste 13:
+        [TestMethod]
+        public void TestKilogramsToGramsConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double kilograms = 5; // Exemplo de kilômetros
+
+            // Act
+            double grams = unitsConverter.KilogramsToGrams(kilograms);
+
+            // Assert
+            double expectedgrams = 5000; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedgrams, grams, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 14:
+        [TestMethod]
+        public void TestKilogramsToPoundsConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double kilograms = 5000; // Exemplo de kilômetros
+
+            // Act
+            double pounds = unitsConverter.KilogramsToPounds(kilograms);
+
+            // Assert
+            double expectedpounds = 11025; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedpounds, pounds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        // Teste 15:
+        [TestMethod]
+        public void TestSecondsToHoursConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double seconds = 3600; // Exemplo de kilômetros
+
+            // Act
+            double hours = unitsConverter.SecondsToHours(seconds);
+
+            // Assert
+            double expectedhours = 1; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedhours, hours, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
     }
 
 }

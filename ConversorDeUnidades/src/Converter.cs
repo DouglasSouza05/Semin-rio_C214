@@ -74,16 +74,19 @@ namespace Aplication{
             return grams / 1000;
         }
 
+        // Fórmula 13:
         public double KilogramsToGrams(double kilograms)
         {
             return kilograms * 1000;
         }
 
+        // Fórmula 14:
         public double KilogramsToPounds(double kilograms)
         {
             return kilograms * 2.205;
         }
 
+        // Fórmula 15:
         public double SecondsToHours(double seconds)
         {
             return seconds / 3600;
