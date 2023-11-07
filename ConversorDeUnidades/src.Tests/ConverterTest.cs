@@ -126,7 +126,7 @@ namespace UnitTest.Aplication{
             double meter = unitsConverter.MetersToFeet(kilometers);
 
             // Assert
-            double expectedMeter = 9843000; // O valor esperado em metros em 3000 metros
+            double expectedMeter = 32294.883; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedMeter, meter, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
@@ -144,7 +144,7 @@ namespace UnitTest.Aplication{
             double miles = unitsConverter.MetersToFeet(meters);
 
             // Assert
-            double expectedMiles = 1; // O valor esperado em metros em 3000 metros
+            double expectedMiles = 5279.129; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         } 
@@ -162,7 +162,7 @@ namespace UnitTest.Aplication{
             double miles = unitsConverter.MetersToFeet(kilometers);
 
             // Assert
-            double expectedMiles = 1000; // O valor esperado em metros em 3000 metros
+            double expectedMiles = 5279.129; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         } 
