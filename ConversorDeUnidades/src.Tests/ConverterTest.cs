@@ -76,6 +76,42 @@ namespace UnitTest.Aplication{
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
+
+        // Teste 5:
+        [TestMethod]
+        public void TestMetersToFeetConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double meters = 1000; // Exemplo de metros
+
+            // Act
+            double feet = unitsConverter.MetersToFeet(meters);
+
+            // Assert
+            double expectedFeet = 3281; // O valor esperado em metros em 1000 metros
+
+            Assert.AreEqual(expectedFeet, feet, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }       
+
+        // Teste 6:
+        [TestMethod]
+        public void TestMetersToKilometerConversion()
+        {
+
+            UnitsConverter unitsConverter = new UnitsConverter();
+
+            double meters = 3000; // Exemplo de metros
+
+            // Act
+            double kilometer = unitsConverter.MetersToFeet(meters);
+
+            // Assert
+            double expectedKilometer = 3; // O valor esperado em metros em 3000 metros
+
+            Assert.AreEqual(expectedKilometer, kilometer, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }  
     }
 
 }
