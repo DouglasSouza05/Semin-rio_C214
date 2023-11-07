@@ -144,7 +144,7 @@ namespace UnitTest.Aplication{
             double miles = unitsConverter.MetersToMiles(meters);
 
             // Assert
-            double expectedMiles = 1 // O valor esperado em metros em 3000 metros
+            double expectedMiles = 1; // O valor esperado em metros em 3000 metros
 
             Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         } 
@@ -216,7 +216,7 @@ namespace UnitTest.Aplication{
             double kilograms = unitsConverter.KilometersPerHourToMetersPerSecond(grams);
 
             // Assert
-            double expectedKilograms = 5 // O valor esperado em metros por seguno 1600
+            double expectedKilograms = 5; // O valor esperado em metros por seguno 1600
 
             Assert.AreEqual(expectedKilograms, kilograms, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
