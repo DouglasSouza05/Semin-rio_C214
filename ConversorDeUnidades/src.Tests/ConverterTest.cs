@@ -30,16 +30,13 @@ namespace UnitTest.Aplication{
 
             UnitsConverter unitsConverter = new UnitsConverter();
 
-            double fahrenheit = 41; // Exemplo de temperatura em graus Fahrenheit
+            double fahrenheit = 104; // Exemplo de temperatura em graus Fahrenheit
 
             // Act
             double celsius = unitsConverter.FahrenheitToCelsius(fahrenheit);
 
             // Assert
-            double expectedCelsius = 0.556; // O valor esperado em graus Celsius para 41°C
-
-            // Convertendo um resultado para decimal e conservando para três casas decimais
-          #  Round(ToDecimal(celsius), 3)
+            double expectedCelsius = 40; // O valor esperado em graus Fahrenheit para 104
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
