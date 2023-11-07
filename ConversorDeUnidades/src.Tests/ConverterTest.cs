@@ -216,7 +216,7 @@ namespace UnitTest.Aplication{
             double kilograms = unitsConverter.KilometersPerHourToMetersPerSecond(grams);
 
             // Assert
-            double expectedKilograms = 5; // O valor esperado em metros por seguno 1600
+            double expectedKilograms = 1388.888888888889; // O valor esperado em metros por seguno 1600
 
             Assert.AreEqual(expectedKilograms, kilograms, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
