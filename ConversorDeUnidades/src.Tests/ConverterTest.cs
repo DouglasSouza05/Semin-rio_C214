@@ -3,14 +3,17 @@ namespace UnitTest.Aplication{
     [TestClass]
     public class UnitsConverterTest
     {
+        UnitsConverter unitsConverter;
 
-        // Teste 1:
+        [TestInitialize]
+        public void setup()
+        {
+            unitsConverter = new UnitsConverter();
+        }
+
         [TestMethod]
         public void TestCelsiusToFahrenheitConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double celsius = 25; // Exemplo de temperatura em graus Celsius
 
             // Act
@@ -22,14 +25,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        
-        // Teste 2:
         [TestMethod]
         public void TestFahrenheitToCelsiusConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double fahrenheit = 104; // Exemplo de temperatura em graus Fahrenheit
 
             // Act
@@ -41,13 +39,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 3:
         [TestMethod]
         public void TestCelsiustToKelvinConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double celsius = 26.85; // Exemplo de temperatura em graus Celsius
 
             // Act
@@ -59,13 +53,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedKelvin, kelvin, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 4:
         [TestMethod]
         public void TestKelvintToCelsiusConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double kelvin = 300.15; // Exemplo de temperatura em graus Kelvin
 
             // Act
@@ -77,13 +67,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 5:
         [TestMethod]
         public void TestMetersToFeetConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double meters = 1000; // Exemplo de metros
 
             // Act
@@ -95,13 +81,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedFeet, feet, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }       
 
-        // Teste 6:
         [TestMethod]
         public void TestMetersToKilometerConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double meters = 3000; // Exemplo de metros
 
             // Act
@@ -113,13 +95,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedKilometer, kilometer, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }  
 
-        // Teste 7:
         [TestMethod]
         public void TestKilometersToMetersConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double kilometers = 3; // Exemplo de metros
 
             // Act
@@ -131,13 +109,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedMeter, meter, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 8:
         [TestMethod]
         public void TestMetersToMilesConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double meters = 1609; // Exemplo de metros
 
             // Act
@@ -149,13 +123,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         } 
 
-        // Teste 9:
         [TestMethod]
         public void TestKilometersToMilesConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double kilometers = 1609; // Exemplo de kilômetros
 
             // Act
@@ -167,13 +137,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 10:
         [TestMethod]
         public void TestMeterspersecondToKilometersPerHourConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double meterspersecond = 1600; // Exemplo de kilômetros
 
             // Act
@@ -185,13 +151,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedKilometersperhour, kilometersperhour, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 11:
         [TestMethod]
         public void TestKilometersPerHourToMetersPerSecondConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double kilometerspersecond = 3600; // Exemplo de kilômetros
 
             // Act
@@ -203,13 +165,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedMeterspersecond, meterspersecond, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         } 
 
-        // Teste 12:
         [TestMethod]
         public void TestGramsToKilogramsConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double grams = 5000; // Exemplo de kilômetros
 
             // Act
@@ -221,13 +179,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedKilograms, kilograms, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 13:
         [TestMethod]
         public void TestKilogramsToGramsConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double kilograms = 5; // Exemplo de kilômetros
 
             // Act
@@ -239,13 +193,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedgrams, grams, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 14:
         [TestMethod]
         public void TestKilogramsToPoundsConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double kilograms = 5000; // Exemplo de kilômetros
 
             // Act
@@ -257,13 +207,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedpounds, pounds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 15:
         [TestMethod]
         public void TestSecondsToHoursConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double seconds = 3600; // Exemplo de kilômetros
 
             // Act
@@ -275,13 +221,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedhours, hours, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 16:
         [TestMethod]
         public void TestHoursToSecondsConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double hours = 100; // Exemplo de kilômetros
 
             // Act
@@ -293,13 +235,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedseconds, seconds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 17:
         [TestMethod]
         public void TestDaysToMonthsConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double days = 900; // Exemplo de dias
 
             // Act
@@ -311,13 +249,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedmonths, months, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 18:
         [TestMethod]
         public void TestLitersToGallonsConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double liters = 1890; // Exemplo de dias
 
             // Act
@@ -329,13 +263,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedgallons, gallons, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 19:
         [TestMethod]
         public void TestGallonsToLitersConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double gallons = 1670; // Exemplo de galões
 
             // Act
@@ -347,13 +277,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedliters, liters, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 20:
         [TestMethod]
         public void TestPascalsToPSIConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double pascals = 9870; // Exemplo de pascals
 
             // Act
@@ -365,13 +291,9 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedpsi, psi, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        // Teste 21:
         [TestMethod]
         public void TestPSIToPascalsConversion()
         {
-
-            UnitsConverter unitsConverter = new UnitsConverter();
-
             double psi = 850; // Exemplo de pascals
 
             // Act
