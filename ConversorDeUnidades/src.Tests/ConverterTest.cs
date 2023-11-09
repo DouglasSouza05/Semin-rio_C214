@@ -3,10 +3,10 @@ namespace UnitTest.Aplication{
     [TestClass]
     public class UnitsConverterTest
     {
-        UnitsConverter unitsConverter;
+        UnitsConverter? unitsConverter;
 
         [TestInitialize]
-        public void setup()
+        public void Setup()
         {
             unitsConverter = new UnitsConverter();
         }
@@ -25,58 +25,48 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        public void TestFahrenheitToCelsiusConversion()
+        [DataTestMethod]
+        [DataRow(104,40)]
+        [DataRow(32,0)]
+        [DataRow(77,25)]
+        public void TestFahrenheitToCelsiusConversion(double fahrenheit, double expectedCelsius)
         {
-            double fahrenheit = 104; // Exemplo de temperatura em graus Fahrenheit
-
             // Act
             double celsius = unitsConverter.FahrenheitToCelsius(fahrenheit);
-
-            // Assert
-            double expectedCelsius = 0; // O valor esperado em graus Fahrenheit para 104
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        public void TestCelsiustToKelvinConversion()
+        [DataTestMethod]
+        [DataRow(0,273.15)]
+        [DataRow(20,293.15)]
+        [DataRow(-30,243.15)]
+        public void TestCelsiustToKelvinConversion(double celsius, double expectedKelvin)
         {
-            double celsius = 26.85; // Exemplo de temperatura em graus Celsius
-
             // Act
             double kelvin = unitsConverter.CelsiusToKelvin(celsius);
-
-            // Assert
-            double expectedKelvin = 300; // O valor esperado em graus Celsius para 26.15°C
 
             Assert.AreEqual(expectedKelvin, kelvin, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        public void TestKelvintToCelsiusConversion()
+        [DataTestMethod]
+        [DataRow(273.15,0)]
+        [DataRow(303.15,30)]
+        [DataRow(20,-253.15)]
+        public void TestKelvintToCelsiusConversion(double kelvin, double expectedCelsius)
         {
-            double kelvin = 300.15; // Exemplo de temperatura em graus Kelvin
-
             // Act
             double celsius = unitsConverter.KelvinToCelsius(kelvin);
-
-            // Assert
-            double expectedCelsius = 27; // O valor esperado em graus Kelvin para 300.15°C
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        public void TestMetersToFeetConversion()
+        [DataTestMethod]
+        [DynamicData(nameof(MetersToFeetData), DynamicDataSourceType.Method)]
+        public void TestMetersToFeetConversion(double meters, double expectedFeet)
         {
-            double meters = 1000; // Exemplo de metros
-
             // Act
             double feet = unitsConverter.MetersToFeet(meters);
-
-            // Assert
-            double expectedFeet = 3281; // O valor esperado em metros em 1000 metros
 
             Assert.AreEqual(expectedFeet, feet, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }       
@@ -304,6 +294,15 @@ namespace UnitTest.Aplication{
 
             Assert.AreEqual(expectedpascals, pascals, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
-    }
 
+        private static IEnumerable<object[]> MetersToFeetData()
+        {
+            return new[]
+            {
+                new object[] { 1000, 3281 },
+                new object[] { 50, 164.05 },
+                new object[] { 1, 3.281 }
+            };
+        }
+    }
 }

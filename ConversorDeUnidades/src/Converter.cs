@@ -4,12 +4,12 @@ namespace Aplication{
     {
         public double CelsiusToFahrenheit(double celsius)
         {
-            return ((celsius * 9) / 5) + 32;
+            return ((celsius * 9) / 5.0) + 32;
         }
 
         public double FahrenheitToCelsius(double fahrenheit)
         {
-            return (fahrenheit - 32) * (5/9);
+            return (fahrenheit - 32) * 5/9.0;
         }
 
         public double CelsiusToKelvin(double celsius)
