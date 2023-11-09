@@ -3,13 +3,18 @@ namespace UnitTest.Aplication{
     [TestClass]
     public class UnitsConverterTest
     {
-        UnitsConverter? unitsConverter;
+        UnitsConverter unitsConverter;
 
-        [TestInitialize]
-        public void Setup()
+        public UnitsConverterTest()
         {
             unitsConverter = new UnitsConverter();
         }
+
+        // [TestInitialize]
+        // public void Setup()
+        // {
+        //     unitsConverter = new UnitsConverter();
+        // }
 
         [TestMethod]
         [TestCategory("temperatura")]
