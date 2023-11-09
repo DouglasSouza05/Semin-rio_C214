@@ -12,6 +12,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("temperatura")]
         public void TestCelsiusToFahrenheitConversion()
         {
             double celsius = 25; // Exemplo de temperatura em graus Celsius
@@ -29,6 +30,7 @@ namespace UnitTest.Aplication{
         [DataRow(104,40)]
         [DataRow(32,0)]
         [DataRow(77,25)]
+        [TestCategory("temperatura")]
         public void TestFahrenheitToCelsiusConversion(double fahrenheit, double expectedCelsius)
         {
             // Act
@@ -41,6 +43,7 @@ namespace UnitTest.Aplication{
         [DataRow(0,273.15)]
         [DataRow(20,293.15)]
         [DataRow(-30,243.15)]
+        [TestCategory("temperatura")]
         public void TestCelsiustToKelvinConversion(double celsius, double expectedKelvin)
         {
             // Act
@@ -53,6 +56,7 @@ namespace UnitTest.Aplication{
         [DataRow(273.15,0)]
         [DataRow(303.15,30)]
         [DataRow(20,-253.15)]
+        [TestCategory("temperatura")]
         public void TestKelvintToCelsiusConversion(double kelvin, double expectedCelsius)
         {
             // Act
@@ -63,6 +67,7 @@ namespace UnitTest.Aplication{
 
         [DataTestMethod]
         [DynamicData(nameof(MetersToFeetData), DynamicDataSourceType.Method)]
+        [TestCategory("comprimento")]
         public void TestMetersToFeetConversion(double meters, double expectedFeet)
         {
             // Act
@@ -72,6 +77,7 @@ namespace UnitTest.Aplication{
         }       
 
         [TestMethod]
+        [TestCategory("comprimento")]
         public void TestMetersToKilometerConversion()
         {
             double meters = 3000; // Exemplo de metros
@@ -86,6 +92,7 @@ namespace UnitTest.Aplication{
         }  
 
         [TestMethod]
+        [TestCategory("comprimento")]
         public void TestKilometersToMetersConversion()
         {
             double kilometers = 3; // Exemplo de metros
@@ -100,6 +107,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("comprimento")]
         public void TestMetersToMilesConversion()
         {
             double meters = 1609; // Exemplo de metros
@@ -114,6 +122,7 @@ namespace UnitTest.Aplication{
         } 
 
         [TestMethod]
+        [TestCategory("comprimento")]
         public void TestKilometersToMilesConversion()
         {
             double kilometers = 1609; // Exemplo de kilômetros
@@ -128,6 +137,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("velocidade")]
         public void TestMeterspersecondToKilometersPerHourConversion()
         {
             double meterspersecond = 1600; // Exemplo de kilômetros
@@ -142,6 +152,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("velocidade")]
         public void TestKilometersPerHourToMetersPerSecondConversion()
         {
             double kilometerspersecond = 3600; // Exemplo de kilômetros
@@ -156,6 +167,7 @@ namespace UnitTest.Aplication{
         } 
 
         [TestMethod]
+        [TestCategory("peso")]
         public void TestGramsToKilogramsConversion()
         {
             double grams = 5000; // Exemplo de kilômetros
@@ -170,6 +182,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("peso")]
         public void TestKilogramsToGramsConversion()
         {
             double kilograms = 5; // Exemplo de kilômetros
@@ -184,6 +197,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("peso")]
         public void TestKilogramsToPoundsConversion()
         {
             double kilograms = 5000; // Exemplo de kilômetros
@@ -198,6 +212,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("data")]
         public void TestSecondsToHoursConversion()
         {
             double seconds = 3600; // Exemplo de kilômetros
@@ -212,6 +227,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("data")]
         public void TestHoursToSecondsConversion()
         {
             double hours = 100; // Exemplo de kilômetros
@@ -226,6 +242,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("data")]
         public void TestDaysToMonthsConversion()
         {
             double days = 900; // Exemplo de dias
@@ -240,6 +257,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("volume")]
         public void TestLitersToGallonsConversion()
         {
             double liters = 1890; // Exemplo de dias
@@ -254,6 +272,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("volume")]
         public void TestGallonsToLitersConversion()
         {
             double gallons = 1670; // Exemplo de galões
@@ -268,6 +287,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("pressao")]
         public void TestPascalsToPSIConversion()
         {
             double pascals = 9870; // Exemplo de pascals
@@ -282,6 +302,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [TestCategory("pressao")]
         public void TestPSIToPascalsConversion()
         {
             double psi = 850; // Exemplo de pascals
