@@ -73,5 +73,5 @@ jobs:
           cd net7.0
           ls
           dotnet tool install -g dotnet-reportgenerator-globaltool
-          reportgenerator -reports:coverage.json -targetdir:report
+          reportgenerator -reports:ConversorDeUnidades/src.Tests/bin/Debug/net7.0/coverage.json -targetdir:report
 
