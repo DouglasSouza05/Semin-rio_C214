@@ -59,13 +59,13 @@ jobs:
       - name: Run tests
         run: |
             cd ConversorDeUnidades
-            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./TestResults/
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
 
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
       - name: Generating report tests
-        run: reportgenerator "-reports:${GITHUB_WORKSPACE}/ConversorDeUnidades/TestResults/coverage.lcov" "-targetdir:${GITHUB_WORKSPACE}/CodeCoverageReport" -reporttypes:Html
+        run: reportgenerator "-reports:${WORKSPACE}/ConversorDeUnidades/TestResults/coverage.lcov" "-targetdir:${WORKSPACE}/CodeCoverageReport" -reporttypes:Html
 
 
       # - name: Creating Artifact
