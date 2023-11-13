@@ -68,6 +68,7 @@ jobs:
         run: |
             cd ConversorDeUnidades
             cd src.Tests
+            cd bin
             ls
             vstest.console.exe YourTestProject.dll /logger:trx
 
