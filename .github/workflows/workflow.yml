@@ -69,8 +69,8 @@ jobs:
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: dll
-          path: ConversorDeUnidades/src.Tests/TestResult
+          name: TestResults
+          path: ConversorDeUnidades/src.Tests/TestResults
 
       # - name: Creating Test Report
       #   run: |
