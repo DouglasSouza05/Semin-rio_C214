@@ -44,6 +44,7 @@ jobs:
             cd src
             cd bin
             cd Release
+            cd net7.0
             ls
 
   test:
