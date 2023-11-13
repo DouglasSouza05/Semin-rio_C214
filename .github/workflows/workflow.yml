@@ -59,6 +59,11 @@ jobs:
       - name: Install Coverlet
         run: dotnet tool install --global coverlet.console
 
+      - name: Build
+        run: |
+            cd ConversorDeUnidades
+            dotnet build --configuration Release
+
       - name: Run Tests using Coverlet
         run: |
             cd ConversorDeUnidades
