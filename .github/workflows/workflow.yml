@@ -80,6 +80,8 @@ jobs:
             ls
             cd src.Tests
             ls
+            cd TestResults
+            ls
 
       - name: Creating Test Report
         run: |
