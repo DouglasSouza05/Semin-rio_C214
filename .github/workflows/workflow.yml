@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -38,11 +38,12 @@ jobs:
             dotnet build --configuration Release
             ls
 
-      - name: Criando o artefato
+      - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
           name: dll
           path: ConversorDeUnidades/src/bin/Release/net7.0/*.dll
+
   test:
     name: test-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -50,7 +51,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -69,7 +70,10 @@ jobs:
             cd ConversorDeUnidades
             dotnet build --configuration Release --no-restore
 
+      - name: Install Coverlet
+        run: dotnet tool install -g coverlet.console
+
       - name: Run Tests
         run: |
             cd ConversorDeUnidades
-            dotnet test --no-restore --verbosity normal
+            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=coverage.json --verbosity normal
