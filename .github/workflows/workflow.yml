@@ -29,15 +29,19 @@ jobs:
 
       - name: Install dependencies
         run: |
-            ls
             cd ConversorDeUnidades
-            ls
             dotnet restore
       
       - name: Build
         run: |
             cd ConversorDeUnidades
             dotnet build --configuration Release --no-restore
+
+      - name: Criando o artefato
+        run: |
+            cd ConversorDeUnidades
+            cd bin
+            ls
 
   test:
     name: test-${{ matrix.os }}
