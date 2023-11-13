@@ -59,7 +59,7 @@ jobs:
       - name: Run tests
         run: |
             cd ConversorDeUnidades
-            dotnet test
+            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./TestResults/
 
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
