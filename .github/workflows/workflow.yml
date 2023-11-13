@@ -64,6 +64,7 @@ jobs:
             cd ConversorDeUnidades
             dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --verbosity detailed
             cd src.Tests
+            cd TestResults
             ls
 
       - name: Creating Artifact
