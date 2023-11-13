@@ -56,27 +56,26 @@ jobs:
             cd ConversorDeUnidades
             dotnet restore
       
-      - name: Install Coverlet
-        run: dotnet tool install --global coverlet.console
-
-      - name: Build
-        run: |
-            cd ConversorDeUnidades
-            dotnet build --configuration Release
+      - name: Install MSTest
+        run: dotnet tool install --global dotnet-test-msbuild
 
       - name: Run Tests using Coverlet
         run: |
             cd ConversorDeUnidades
-            cd src.Tests
-            cd bin
-            ls
-            vstest.console.exe YourTestProject.dll /logger:trx
+            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./TestResults/
 
-      - name: Creating Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: TestResults
-          path: ConversorDeUnidades/src.Tests/TestResults
+      - name: Install report generator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Generating report tests
+        run: reportgenerator "-reports:./TestResults/coverage.opencover.xml" "-targetdir:./CodeCoverageReport" -reporttypes:Html
+
+
+      # - name: Creating Artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: TestResults
+      #     path: ConversorDeUnidades/src.Tests/TestResults
 
       # - name: Creating Test Report
       #   run: |
