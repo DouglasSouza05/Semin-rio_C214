@@ -35,13 +35,12 @@ jobs:
       - name: Build
         run: |
             cd ConversorDeUnidades
-            dotnet build --configuration Release --no-restore
+            dotnet build --configuration Release
             ls
 
       - name: Criando o artefato
         run: |
             cd ConversorDeUnidades
-            cd bin
             ls
 
   test:
