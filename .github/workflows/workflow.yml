@@ -77,10 +77,12 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=coverage.json --verbosity normal
+            ls
 
       - name: Creating Test Report
         run: |
           ls
+          cd ConversorDeUnidades
           dotnet tool install -g dotnet-reportgenerator-globaltool
           reportgenerator -reports:coverage.json -targetdir:report
 
