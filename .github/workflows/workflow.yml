@@ -62,7 +62,7 @@ jobs:
       - name: Run Tests using Coverlet
         run: |
             cd ConversorDeUnidades
-            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --verbosity detailed
+            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --verbosity minimal
             cd src.Tests
             cd TestResults
             ls
