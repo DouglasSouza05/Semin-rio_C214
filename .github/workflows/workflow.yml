@@ -57,7 +57,7 @@ jobs:
             dotnet restore
       
       - name: Install MSTest
-        run: dotnet tool install --global dotnet-test-msbuild
+        run: dotnet tool install --global dotnet-test-msbuild --version 3.1.1
 
       - name: Run Tests using Coverlet
         run: |
