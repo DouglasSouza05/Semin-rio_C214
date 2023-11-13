@@ -32,15 +32,7 @@ namespace Core.Aplication{
             return ((kelvin - 273.15) * 9/5.0) + 32;
         }
 
-        public double MetersToFeet(double meters)
-        {
-            return meters * 3.281;
-        }
-
-        public double FeetToMeters(double meters)
-        {
-            return meters / 3.281;
-        }
+        // ################################################
 
         public double MetersToKilometers(double meters)
         {
@@ -52,14 +44,14 @@ namespace Core.Aplication{
             return kilometers * 1000;
         }
 
-        public double MetersToMiles(double meters)
+        public double MetersToFeet(double meters)
         {
-            return meters / 1609;
+            return meters * 3.281;
         }
 
-        public double KilometersToMiles(double kilometers)
+        public double FeetToMeters(double meters)
         {
-            return kilometers / 1.609;
+            return meters / 3.281;
         }
 
         public double KilometersToFeet(double kilometers)
@@ -72,6 +64,18 @@ namespace Core.Aplication{
             return Feet / 3281;
         }
 
+        public double MetersToMiles(double meters)
+        {
+            return meters / 1609;
+        }
+
+        public double KilometersToMiles(double kilometers)
+        {
+            return kilometers / 1.609;
+        }
+
+        // ################################################
+
         public double MetersPerSecondToKilometersPerHour(double metersPerSecond)
         {
             return metersPerSecond * 3.6;
@@ -82,20 +86,7 @@ namespace Core.Aplication{
             return kilometersPerHour / 3.6;
         }
 
-        public double GramsToKilograms(double grams)
-        {
-            return grams / 1000;
-        }
-
-        public double KilogramsToGrams(double kilograms)
-        {
-            return kilograms * 1000;
-        }
-
-        public double KilogramsToPounds(double kilograms)
-        {
-            return kilograms * 2.205;
-        }
+        // ################################################
 
         public double SecondsToHours(double seconds)
         {
@@ -107,10 +98,62 @@ namespace Core.Aplication{
             return hours * 3600;
         }
 
+        public double SecondsToDays(double seconds)
+        {
+            return seconds / 86400;
+        }
+
+        public double DaysToSeconds(double days)
+        {
+            return days * 86400;
+        }
+
+        public double HoursToDays(double hours)
+        {
+            return hours / 24;
+        }
+
+        public double DaysToHours(double days)
+        {
+            return days * 24;
+        }
+
         public double DaysToMonths(double days)
         {
             // Conversão aproximada
             return days / 30.417;
+        }
+
+        // ################################################
+
+        public double GramsToKilograms(double grams)
+        {
+            return grams / 1000;
+        }
+
+        public double KilogramsToGrams(double kilograms)
+        {
+            return kilograms * 1000;
+        }
+
+        public double GramsToPounds(double grams)
+        {
+            return grams / 453.6;
+        }
+
+        public double PoundsToGrams(double grams)
+        {
+            return grams * 453.6;
+        }
+
+        public double KilogramsToPounds(double kilograms)
+        {
+            return kilograms * 2.205;
+        }
+
+        public double PoundsToKilograms(double Pounds)
+        {
+            return Pounds / 2.205;
         }
 
         public double LitersToGallons(double liters)
@@ -122,6 +165,8 @@ namespace Core.Aplication{
         {
             return gallons * 3.785;
         }
+
+        // ################################################
 
         public double PascalsToPSI(double pascals)
         {

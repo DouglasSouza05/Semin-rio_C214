@@ -38,7 +38,6 @@ namespace WinForms.Aplication {
             "Seconds",
             "Hours",
             "Days",
-            "Months"
         };
 
         List<string> massOptions = new List<string>
@@ -127,9 +126,11 @@ namespace WinForms.Aplication {
             // Converte o valor de texto de entrada para um número. TryParse retorna um valor booleano caso haja sucesso (True)
             if (double.TryParse(inputTextBox.Text, out double inputValue)) {
                 // Chama o método ConvertUnits para realizar a conversão
+
                 double convertedValue = ConvertUnits(fromUnit, toUnit, inputValue);
                 // Exibe o resultado na TextBox de resultado na forma de string
-                resultTextBox.Text = convertedValue.ToString("F2");
+
+                resultTextBox.Text = (convertedValue < 1) ? convertedValue.ToString("F5") : convertedValue.ToString("F2");
             } else {
                 resultTextBox.Text = "Valor inválido";
             }
@@ -145,10 +146,10 @@ namespace WinForms.Aplication {
                 return units.LengthConvertUnits(fromUnit, toUnit, value);
 
             } else if (mainUnit == "Time") {
-                return value;
+                return units.TimeConvertUnits(fromUnit, toUnit, value);
 
             } else if (mainUnit == "Mass") {
-                return value;
+                return units.MassConvertUnits(fromUnit, toUnit, value);
 
             } else {
                 return value;
