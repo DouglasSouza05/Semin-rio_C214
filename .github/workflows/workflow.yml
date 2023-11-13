@@ -63,6 +63,7 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --verbosity detailed
+            cd src.Tests
             ls
 
       # - name: Creating Test Report
