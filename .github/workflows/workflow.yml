@@ -71,6 +71,8 @@ jobs:
         run: |
           ls
           cd ConversorDeUnidades
+          cd src.Tests
+          cd TestResult
           dotnet tool install -g dotnet-reportgenerator-globaltool
           reportgenerator -reports:coverage.json -targetdir:report
 
