@@ -67,7 +67,7 @@ jobs:
       - name: Run Tests using Coverlet
         run: |
             cd ConversorDeUnidades
-            coverlet src.Test/bin/Release/net7.0/*.dll --target "dotnet" --targetargs "test src.Test/*.cs --no-build"
+            coverlet src.Test/bin/Release/net7.0/ --target "dotnet" --targetargs "test src.Test/*.cs --no-build"
             cd src.Tests
             cd TestResults
             ls 
