@@ -67,7 +67,7 @@ jobs:
       - name: Run Tests using Coverlet
         run: |
             cd ConversorDeUnidades
-            cd src.Test
+            cd src.Tests
             ls
             vstest.console.exe YourTestProject.dll /logger:trx
 
