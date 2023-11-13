@@ -67,5 +67,5 @@ jobs:
       - name: Creating Test Report
         run: |
           dotnet tool install -g dotnet-reportgenerator-globaltool
-          reportgenerator -reports:ConversorDeUnidades/src.Tests/bin/Debug/net7.0/coverage.json -targetdir:report
+          reportgenerator -reports:ConversorDeUnidades/src/bin/Debug/net7.0/coverage.json -targetdir:report
 
