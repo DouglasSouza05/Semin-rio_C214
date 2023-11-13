@@ -62,10 +62,11 @@ jobs:
       - name: Run Tests using Coverlet
         run: |
             cd ConversorDeUnidades
-            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=coverage.json --verbosity detailed
+            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --verbosity detailed
+            ls
 
-      - name: Creating Test Report
-        run: |
-          dotnet tool install -g dotnet-reportgenerator-globaltool
-          reportgenerator -reports:ConversorDeUnidades/src/bin/Release/net7.0/coverage.json -targetdir:report
+      # - name: Creating Test Report
+      #   run: |
+      #     dotnet tool install -g dotnet-reportgenerator-globaltool
+      #     reportgenerator -reports:ConversorDeUnidades/src/bin/Release/net7.0/coverage.json -targetdir:report
 
