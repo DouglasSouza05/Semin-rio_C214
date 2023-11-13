@@ -44,6 +44,8 @@ jobs:
             ls
             cd src
             ls
+            cd bin/Debug/net7.0
+            ls
 
   test:
     name: test-${{ matrix.os }}
