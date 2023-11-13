@@ -36,6 +36,7 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet build --configuration Release --no-restore
+            ls
 
       - name: Criando o artefato
         run: |
