@@ -55,17 +55,11 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet restore
-      
-      - name: Install MSTest
-        run: |
-            dotnet add package Microsoft.NET.Test.Sdk
-            dotnet add package MSTest.TestFramework        
-            dotnet tool install --global dotnet-test-msbuild --version 3.1.1
-
-      - name: Run Tests using Coverlet
+        
+      - name: Run tests
         run: |
             cd ConversorDeUnidades
-            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./TestResults/
+            dotnet test
 
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
