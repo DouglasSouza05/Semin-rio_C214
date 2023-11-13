@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
-using Main.Aplication;
+using Core.Aplication;
 
 class Program
 {

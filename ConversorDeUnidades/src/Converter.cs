@@ -1,4 +1,4 @@
-namespace Main.Aplication{
+namespace Core.Aplication{
 
     public class UnitsConverter
     {
@@ -22,9 +22,24 @@ namespace Main.Aplication{
             return kelvin - 273.15;
         }
 
+        public double FahrenheitToKelvin(double fahrenheit)
+        {
+            return ((fahrenheit - 32) * 5/9.0) + 273.15;
+        }
+
+        public double KelvinToFahrenheit(double kelvin)
+        {
+            return ((kelvin - 273.15) * 9/5.0) + 32;
+        }
+
         public double MetersToFeet(double meters)
         {
             return meters * 3.281;
+        }
+
+        public double FeetToMeters(double meters)
+        {
+            return meters / 3.281;
         }
 
         public double MetersToKilometers(double meters)
@@ -45,6 +60,16 @@ namespace Main.Aplication{
         public double KilometersToMiles(double kilometers)
         {
             return kilometers / 1.609;
+        }
+
+        public double KilometersToFeet(double kilometers)
+        {
+            return kilometers * 3281;
+        }
+
+        public double FeetToKilometers(double Feet)
+        {
+            return Feet / 3281;
         }
 
         public double MetersPerSecondToKilometersPerHour(double metersPerSecond)
