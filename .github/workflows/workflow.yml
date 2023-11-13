@@ -39,14 +39,10 @@ jobs:
             ls
 
       - name: Criando o artefato
-        run: |
-            cd ConversorDeUnidades
-            cd src
-            cd bin
-            cd Release
-            cd net7.0
-            ls
-
+        uses: actions/upload-artifact@v3
+        with:
+          name: dll
+          path: ConversorDeUnidades/src/bin/Release/net7.0/*.dll
   test:
     name: test-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
