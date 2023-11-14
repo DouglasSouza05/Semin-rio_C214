@@ -196,6 +196,36 @@ namespace UnitTest.Aplication{
 
         [TestMethod]
         [TestCategory("mass")]
+        public void TestGramsToPoundsConversion()
+        {
+            double grams = 1000; // Exemplo de kilômetros
+
+            // Act
+            double Pounds = unitsConverter.GramsToPounds(grams);
+
+            // Assert
+            double expectedPounds = 2.205; // O valor esperado em metros por seguno 1600
+
+            Assert.AreEqual(expectedPounds, Pounds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [TestMethod]
+        [TestCategory("mass")]
+        public void TestPoundsToGramsConversion()
+        {
+            double Pounds = 5; // Exemplo de kilômetros
+
+            // Act
+            double grams = unitsConverter.PoundsToGrams(Pounds);
+
+            // Assert
+            double expectedgrams = 2268; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedgrams, grams, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [TestMethod]
+        [TestCategory("mass")]
         public void TestKilogramsToPoundsConversion()
         {
             double kilograms = 5000; // Exemplo de kilômetros
@@ -209,36 +239,87 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedpounds, pounds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
+        [TestMethod]
+        [TestCategory("mass")]
+        public void TestPoundsToKilogramsConversion()
+        {
+            double Pounds = 11025; // Exemplo de kilômetros
+
+            // Act
+            double Kilograms = unitsConverter.PoundsToKilograms(Pounds);
+
+            // Assert
+            double expectedKilograms = 5000; // O valor esperado em gramas por 5 kilos
+
+            Assert.AreEqual(expectedKilograms, Kilograms, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
         //--------------------------------------------------------------------------------------------------
 
         [TestMethod]
+        [DataRow(3600,1)]
         [TestCategory("time")]
-        public void TestSecondsToHoursConversion()
+        public void TestSecondsToHoursConversion(double seconds, double expectedHours)
         {
-            double seconds = 3600; // Exemplo de kilômetros
-
             // Act
             double hours = unitsConverter.SecondsToHours(seconds);
 
-            // Assert
-            double expectedhours = 1; // O valor esperado em gramas por 5 kilos
-
-            Assert.AreEqual(expectedhours, hours, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+            Assert.AreEqual(expectedHours, hours, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
         [TestMethod]
+        [DataRow(100,360000)]
         [TestCategory("time")]
-        public void TestHoursToSecondsConversion()
+        public void TestHoursToSecondsConversion(double hours, double expectedSeconds)
         {
-            double hours = 100; // Exemplo de kilômetros
-
             // Act
             double seconds = unitsConverter.HoursToSeconds(hours);
 
-            // Assert
-            double expectedseconds = 360000; // O valor esperado em gramas por 5 kilos
+            Assert.AreEqual(expectedSeconds, seconds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
 
-            Assert.AreEqual(expectedseconds, seconds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        [TestMethod]
+        [DataRow(86400,1)]
+        [TestCategory("time")]
+        public void TestSecondsToDaysConversion(double seconds, double expectedDays)
+        {
+            // Act
+            double days = unitsConverter.SecondsToDays(seconds);
+
+            Assert.AreEqual(expectedDays, days, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [TestMethod]
+        [DataRow(7,604800)]
+        [TestCategory("time")]
+        public void TestDaysToSecondsConversion(double days, double expectedSeconds)
+        {
+            // Act
+            double seconds = unitsConverter.DaysToSeconds(days);
+
+            Assert.AreEqual(expectedSeconds, seconds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [TestMethod]
+        [DataRow(24,1)]
+        [TestCategory("time")]
+        public void TestHoursToDaysConversion(double Hours, double expectedDays)
+        {
+            // Act
+            double days = unitsConverter.HoursToDays(Hours);
+
+            Assert.AreEqual(expectedDays, days, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [TestMethod]
+        [DataRow(7,168)]
+        [TestCategory("time")]
+        public void TestDaysToHoursConversion(double days, double expectedHours)
+        {
+            // Act
+            double Hours = unitsConverter.DaysToHours(days);
+
+            Assert.AreEqual(expectedHours, Hours, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
         //--------------------------------------------------------------------------------------------
