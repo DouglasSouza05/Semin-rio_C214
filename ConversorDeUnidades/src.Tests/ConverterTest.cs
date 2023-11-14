@@ -17,16 +17,14 @@ namespace UnitTest.Aplication{
         // }
 
         [TestMethod]
-        [TestCategory("temperatura")]
-        public void TestCelsiusToFahrenheitConversion()
+        [DataRow(40,104)]
+        [DataRow(0,32)]
+        [DataRow(25,77)]
+        [TestCategory("temperature")]
+        public void TestCelsiusToFahrenheitConversion(double celsius, double expectedFahrenheit)
         {
-            double celsius = 25; // Exemplo de temperatura em graus Celsius
-
             // Act
             double fahrenheit = unitsConverter.CelsiusToFahrenheit(celsius);
-
-            // Assert
-            double expectedFahrenheit = 77; // O valor esperado em graus Fahrenheit para 25°C
 
             Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
@@ -35,7 +33,7 @@ namespace UnitTest.Aplication{
         [DataRow(104,40)]
         [DataRow(32,0)]
         [DataRow(77,25)]
-        [TestCategory("temperatura")]
+        [TestCategory("temperature")]
         public void TestFahrenheitToCelsiusConversion(double fahrenheit, double expectedCelsius)
         {
             // Act
@@ -48,7 +46,7 @@ namespace UnitTest.Aplication{
         [DataRow(0,273.15)]
         [DataRow(20,293.15)]
         [DataRow(-30,243.15)]
-        [TestCategory("temperatura")]
+        [TestCategory("temperature")]
         public void TestCelsiustToKelvinConversion(double celsius, double expectedKelvin)
         {
             // Act
@@ -61,7 +59,7 @@ namespace UnitTest.Aplication{
         [DataRow(273.15,0)]
         [DataRow(303.15,30)]
         [DataRow(20,-253.15)]
-        [TestCategory("temperatura")]
+        [TestCategory("temperature")]
         public void TestKelvintToCelsiusConversion(double kelvin, double expectedCelsius)
         {
             // Act
@@ -71,108 +69,103 @@ namespace UnitTest.Aplication{
         }
 
         [DataTestMethod]
+        [DataRow(104,313.15)]
+        [DataRow(32,273.15)]
+        [DataRow(0,255.372)]
+        [TestCategory("temperature")]
+        public void TestFahrenheitToKelvinConversion(double fahrenheit, double expectedkelvin)
+        {
+            // Act
+            double kelvin = unitsConverter.FahrenheitToKelvin(fahrenheit);
+
+            Assert.AreEqual(expectedkelvin, kelvin, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [DataTestMethod]
+        [DataRow(273.15,32)]
+        [DataRow(313.15,104)]
+        [DataRow(20,-423.67)]
+        [TestCategory("temperature")]
+        public void TestKelvintToFahrenheitConversion(double kelvin, double expectedFahrenheit)
+        {
+            // Act
+            double Fahrenheit = unitsConverter.KelvinToFahrenheit(kelvin);
+
+            Assert.AreEqual(expectedFahrenheit, Fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        //---------------------------------------------------------------------------------------------------
+
+        [TestMethod]
+        [DynamicData(nameof(MetersToKilometersData), DynamicDataSourceType.Method)]
+        [TestCategory("length")]
+        public void TestMetersToKilometerConversion(double meters, double expectedKilometers)
+        {
+            // Act
+            double kilometers = unitsConverter.MetersToKilometers(meters);
+
+            Assert.AreEqual(expectedKilometers, kilometers, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }  
+
+        [TestMethod]
+        [DynamicData(nameof(KilometersToMetersData), DynamicDataSourceType.Method)]
+        [TestCategory("length")]
+        public void TestKilometersToMetersConversion(double kilometers, double expectedMeters)
+        {
+            // Act
+            double meters = unitsConverter.KilometersToMeters(kilometers);
+
+            Assert.AreEqual(expectedMeters, meters, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [DataTestMethod]
         [DynamicData(nameof(MetersToFeetData), DynamicDataSourceType.Method)]
-        [TestCategory("comprimento")]
+        [TestCategory("length")]
         public void TestMetersToFeetConversion(double meters, double expectedFeet)
         {
             // Act
             double feet = unitsConverter.MetersToFeet(meters);
 
             Assert.AreEqual(expectedFeet, feet, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        }       
-
-        [TestMethod]
-        [TestCategory("comprimento")]
-        public void TestMetersToKilometerConversion()
-        {
-            double meters = 3000; // Exemplo de metros
-
-            // Act
-            double kilometer = unitsConverter.MetersToKilometers(meters);
-
-            // Assert
-            double expectedKilometer = 3; // O valor esperado em metros em 3000 metros
-
-            Assert.AreEqual(expectedKilometer, kilometer, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        }  
-
-        [TestMethod]
-        [TestCategory("comprimento")]
-        public void TestKilometersToMetersConversion()
-        {
-            double kilometers = 3; // Exemplo de metros
-
-            // Act
-            double meter = unitsConverter.KilometersToMeters(kilometers);
-
-            // Assert
-            double expectedMeter = 3000; // O valor esperado em metros em 3000 metros
-
-            Assert.AreEqual(expectedMeter, meter, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        [TestCategory("comprimento")]
-        public void TestMetersToMilesConversion()
+        [DataTestMethod]
+        [DynamicData(nameof(FeetToMetersData), DynamicDataSourceType.Method)]
+        [TestCategory("length")]
+        public void TestFeetToMetersConversion(double feet, double expectedMeters)
         {
-            double meters = 1609; // Exemplo de metros
-
             // Act
-            double miles = unitsConverter.MetersToMiles(meters);
+            double meters = unitsConverter.FeetToMeters(feet);
 
-            // Assert
-            double expectedMiles = 1; // O valor esperado em metros em 3000 metros
-
-            Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        } 
-
-        [TestMethod]
-        [TestCategory("comprimento")]
-        public void TestKilometersToMilesConversion()
-        {
-            double kilometers = 1609; // Exemplo de kilômetros
-
-            // Act
-            double miles = unitsConverter.KilometersToMiles(kilometers);
-
-            // Assert
-            double expectedMiles = 1000; // O valor esperado em metros em 3000 metros
-
-            Assert.AreEqual(expectedMiles, miles, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+            Assert.AreEqual(expectedMeters, meters, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        [TestCategory("velocidade")]
-        public void TestMeterspersecondToKilometersPerHourConversion()
+        [DataTestMethod]
+        [DynamicData(nameof(KilometersToFeetData), DynamicDataSourceType.Method)]
+        [TestCategory("length")]
+        public void TestKilometersToFeetConversion(double kilometers, double expectedFeet)
         {
-            double meterspersecond = 1600; // Exemplo de kilômetros
-
             // Act
-            double kilometersperhour = unitsConverter.MetersPerSecondToKilometersPerHour(meterspersecond);
+            double feet = unitsConverter.KilometersToFeet(kilometers);
 
-            // Assert
-            double expectedKilometersperhour = 5760; // O valor esperado em metros por seguno 1600
-
-            Assert.AreEqual(expectedKilometersperhour, kilometersperhour, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+            Assert.AreEqual(expectedFeet, feet, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        [TestCategory("velocidade")]
-        public void TestKilometersPerHourToMetersPerSecondConversion()
+        [DataTestMethod]
+        [DynamicData(nameof(FeetToKilometersData), DynamicDataSourceType.Method)]
+        [TestCategory("length")]
+        public void TestFeetToKilometersConversion(double feet, double expectedKilometers)
         {
-            double kilometerspersecond = 3600; // Exemplo de kilômetros
-
             // Act
-            double meterspersecond = unitsConverter.KilometersPerHourToMetersPerSecond(kilometerspersecond);
+            double kilometers = unitsConverter.FeetToKilometers(feet);
 
-            // Assert
-            double expectedMeterspersecond = 1000; // O valor esperado em metros por seguno 1600
+            Assert.AreEqual(expectedKilometers, kilometers, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }          
 
-            Assert.AreEqual(expectedMeterspersecond, meterspersecond, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        } 
+        //--------------------------------------------------------------------------------------------
 
         [TestMethod]
-        [TestCategory("peso")]
+        [TestCategory("mass")]
         public void TestGramsToKilogramsConversion()
         {
             double grams = 5000; // Exemplo de kilômetros
@@ -187,7 +180,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
-        [TestCategory("peso")]
+        [TestCategory("mass")]
         public void TestKilogramsToGramsConversion()
         {
             double kilograms = 5; // Exemplo de kilômetros
@@ -202,7 +195,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
-        [TestCategory("peso")]
+        [TestCategory("mass")]
         public void TestKilogramsToPoundsConversion()
         {
             double kilograms = 5000; // Exemplo de kilômetros
@@ -216,8 +209,10 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedpounds, pounds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
+        //--------------------------------------------------------------------------------------------------
+
         [TestMethod]
-        [TestCategory("data")]
+        [TestCategory("time")]
         public void TestSecondsToHoursConversion()
         {
             double seconds = 3600; // Exemplo de kilômetros
@@ -232,7 +227,7 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
-        [TestCategory("data")]
+        [TestCategory("time")]
         public void TestHoursToSecondsConversion()
         {
             double hours = 100; // Exemplo de kilômetros
@@ -246,81 +241,7 @@ namespace UnitTest.Aplication{
             Assert.AreEqual(expectedseconds, seconds, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
-        [TestMethod]
-        [TestCategory("data")]
-        public void TestDaysToMonthsConversion()
-        {
-            double days = 900; // Exemplo de dias
-
-            // Act
-            double months = unitsConverter.DaysToMonths(days);
-
-            // Assert
-            double expectedmonths = 29.58871684; // O valor esperado em gramas por 5 kilos
-
-            Assert.AreEqual(expectedmonths, months, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        }
-
-        [TestMethod]
-        [TestCategory("volume")]
-        public void TestLitersToGallonsConversion()
-        {
-            double liters = 1890; // Exemplo de dias
-
-            // Act
-            double gallons = unitsConverter.LitersToGallons(liters);
-
-            // Assert
-            double expectedgallons = 499.339498; // O valor esperado em gramas por 5 kilos
-
-            Assert.AreEqual(expectedgallons, gallons, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        }
-
-        [TestMethod]
-        [TestCategory("volume")]
-        public void TestGallonsToLitersConversion()
-        {
-            double gallons = 1670; // Exemplo de galões
-
-            // Act
-            double liters = unitsConverter.GallonsToLiters(gallons);
-
-            // Assert
-            double expectedliters = 6320.95; // O valor esperado em gramas por 5 kilos
-
-            Assert.AreEqual(expectedliters, liters, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        }
-
-        [TestMethod]
-        [TestCategory("pressao")]
-        public void TestPascalsToPSIConversion()
-        {
-            double pascals = 9870; // Exemplo de pascals
-
-            // Act
-            double psi = unitsConverter.PascalsToPSI(pascals);
-
-            // Assert
-            double expectedpsi = 1.431472081; // O valor esperado em gramas por 5 kilos
-
-            Assert.AreEqual(expectedpsi, psi, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        }
-
-        [TestMethod]
-        [TestCategory("pressao")]
-        public void TestPSIToPascalsConversion()
-        {
-            double psi = 850; // Exemplo de pascals
-
-            // Act
-            double pascals = unitsConverter.PSIToPascals(psi);
-
-            // Assert
-            double expectedpascals = 5860750; // O valor esperado em gramas por 5 kilos
-
-            Assert.AreEqual(expectedpascals, pascals, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
-        }
-
+        //--------------------------------------------------------------------------------------------
         private static IEnumerable<object[]> MetersToFeetData()
         {
             return new[]
@@ -328,6 +249,56 @@ namespace UnitTest.Aplication{
                 new object[] { 1000, 3281 },
                 new object[] { 50, 164.05 },
                 new object[] { 1, 3.281 }
+            };
+        }
+
+        private static IEnumerable<object[]> FeetToMetersData()
+        {
+            return new[]
+            {
+                new object[] { 3281, 1000 },
+                new object[] { 164.05, 50 },
+                new object[] { 3.281, 1 }
+            };
+        }
+
+        private static IEnumerable<object[]> KilometersToFeetData()
+        {
+            return new[]
+            {
+                new object[] { 1, 3281 },
+                new object[] { 5, 16405 },
+                new object[] { 10, 32810 }
+            };
+        }
+
+        private static IEnumerable<object[]> FeetToKilometersData()
+        {
+            return new[]
+            {
+                new object[] { 3281, 1 },
+                new object[] { 16405, 5 },
+                new object[] { 32810, 10 }
+            };
+        }
+        
+        private static IEnumerable<object[]> MetersToKilometersData()
+        {
+            return new[]
+            {
+                new object[] { 1000, 1 },
+                new object[] { 500, 0.5 },
+                new object[] { 20000, 20 }
+            };
+        }
+
+        private static IEnumerable<object[]> KilometersToMetersData()
+        {
+            return new[]
+            {
+                new object[] { 1, 1000 },
+                new object[] { 0.4, 400 },
+                new object[] { 50, 50000 }
             };
         }
     }

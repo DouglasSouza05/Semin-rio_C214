@@ -64,28 +64,6 @@ namespace Core.Aplication{
             return Feet / 3281;
         }
 
-        public double MetersToMiles(double meters)
-        {
-            return meters / 1609;
-        }
-
-        public double KilometersToMiles(double kilometers)
-        {
-            return kilometers / 1.609;
-        }
-
-        // ################################################
-
-        public double MetersPerSecondToKilometersPerHour(double metersPerSecond)
-        {
-            return metersPerSecond * 3.6;
-        }
-
-        public double KilometersPerHourToMetersPerSecond(double kilometersPerHour)
-        {
-            return kilometersPerHour / 3.6;
-        }
-
         // ################################################
 
         public double SecondsToHours(double seconds)
@@ -118,12 +96,6 @@ namespace Core.Aplication{
             return days * 24;
         }
 
-        public double DaysToMonths(double days)
-        {
-            // Conversão aproximada
-            return days / 30.417;
-        }
-
         // ################################################
 
         public double GramsToKilograms(double grams)
@@ -154,28 +126,6 @@ namespace Core.Aplication{
         public double PoundsToKilograms(double Pounds)
         {
             return Pounds / 2.205;
-        }
-
-        public double LitersToGallons(double liters)
-        {
-            return liters / 3.785;
-        }
-
-        public double GallonsToLiters(double gallons)
-        {
-            return gallons * 3.785;
-        }
-
-        // ################################################
-
-        public double PascalsToPSI(double pascals)
-        {
-            return pascals / 6895;
-        }
-
-        public double PSIToPascals(double psi)
-        {
-            return psi * 6895;
         }
     }
 }
