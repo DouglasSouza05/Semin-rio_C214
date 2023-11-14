@@ -60,6 +60,8 @@ namespace WinForms.Aplication {
             mainComboBox.Items.AddRange(mainOptions.ToArray());
 
             converterButton.Text = "Converter";
+            converterButton.BackColor = Color.White;
+            // converterButton.ForeColor = ColorTranslator.FromHtml("#FF69B4");
 
             ComboBox_Locations();
             ComboBox_Add();
@@ -123,6 +125,11 @@ namespace WinForms.Aplication {
             string fromUnit = fromComboBox.SelectedItem.ToString();
             string toUnit = toComboBox.SelectedItem.ToString();
 
+            if (mainComboBox.SelectedItem == null || fromComboBox.SelectedItem == null || toComboBox.SelectedItem == null) {
+                resultTextBox.Text = "Selecione as unidades de Conversão!";
+                return;
+            }
+
             // Converte o valor de texto de entrada para um número. TryParse retorna um valor booleano caso haja sucesso (True)
             if (double.TryParse(inputTextBox.Text, out double inputValue)) {
                 // Chama o método ConvertUnits para realizar a conversão
@@ -132,13 +139,17 @@ namespace WinForms.Aplication {
 
                 resultTextBox.Text = (convertedValue < 1) ? convertedValue.ToString("F5") : convertedValue.ToString("F2");
             } else {
-                resultTextBox.Text = "Valor inválido";
+                resultTextBox.Text = "Valor Inválido!";
             }
         }
 
         private double ConvertUnits(string fromUnit, string toUnit, double value) {
 
             mainUnit = mainComboBox.SelectedItem.ToString();
+
+            if (mainUnit == null || fromUnit == null || toUnit == null) {
+                return value;
+            }
 
             if (mainUnit == "Temperature") {
                 return units.TempConvertUnits(fromUnit, toUnit, value);

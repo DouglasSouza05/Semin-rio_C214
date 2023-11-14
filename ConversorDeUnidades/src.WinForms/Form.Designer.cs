@@ -32,6 +32,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 450);
             this.Text = "Units Converter Form";
+            this.BackColor = ColorTranslator.FromHtml("#7FFFD4");
+            // this.BackColor = Color.AliceBlue;
         }
         
         #endregion
