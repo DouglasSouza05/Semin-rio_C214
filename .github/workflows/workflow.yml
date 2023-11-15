@@ -67,7 +67,7 @@ jobs:
       - name: Generating report tests
         run: |
              cd ConversorDeUnidades
-             reportgenerator -reports:**/coverage.opencover.xml -targetdir:./src.Tests/coverage_reports --reporttypes:Html
+             reportgenerator -reports:./src.Tests/coverage.opencover.xml -targetdir:./src.Tests/coverage_reports --reporttypes:Html
 
 
       # - name: Creating Artifact
