@@ -3,7 +3,7 @@ namespace UnitTest.Aplication{
     [TestClass]
     public class UnitsConverterTest
     {
-        readonly UnitsConverter unitsConverter;
+        UnitsConverter unitsConverter;
         
         public UnitsConverterTest()
         {
