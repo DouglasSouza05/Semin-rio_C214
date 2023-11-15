@@ -1,20 +1,38 @@
 namespace UnitTest.Aplication{
-
+    
     [TestClass]
     public class UnitsConverterTest
     {
-        UnitsConverter unitsConverter;
-
+        readonly UnitsConverter unitsConverter;
+        
         public UnitsConverterTest()
         {
             unitsConverter = new UnitsConverter();
         }
+        
+        /*
+        [TestInitialize]
+        public void Setup()
+        {
+             unitsConverter = new UnitsConverter();
+        }
+        */
 
-        // [TestInitialize]
-        // public void Setup()
-        // {
-        //     unitsConverter = new UnitsConverter();
-        // }
+        [TestMethod]
+        [TestCategory("instance")]
+        public void TestInstanciaConverter()
+        {
+            Assert.IsNotNull(unitsConverter);
+        }
+
+        [TestMethod]
+        [TestCategory("instance")]
+        public void TestInstanciaConverterType()
+        {
+            Assert.IsInstanceOfType(unitsConverter, typeof(UnitsConverter));
+        }
+
+        //---------------------------------------------------------------------------------------------------
 
         [TestMethod]
         [DataRow(40,104)]
@@ -27,6 +45,19 @@ namespace UnitTest.Aplication{
             double fahrenheit = unitsConverter.CelsiusToFahrenheit(celsius);
 
             Assert.AreEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [TestMethod]
+        [DataRow(0,104)]
+        [DataRow(32,32)]
+        [DataRow(25,40)]
+        [TestCategory("temperature")]
+        public void TestCelsiusToFahrenheitConversionNotEqual(double celsius, double expectedFahrenheit)
+        {
+            // Act
+            double fahrenheit = unitsConverter.CelsiusToFahrenheit(celsius);
+
+            Assert.AreNotEqual(expectedFahrenheit, fahrenheit, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
         [DataTestMethod]
@@ -66,6 +97,19 @@ namespace UnitTest.Aplication{
             double celsius = unitsConverter.KelvinToCelsius(kelvin);
 
             Assert.AreEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
+        }
+
+        [DataTestMethod]
+        [DataRow(273.15,33)]
+        [DataRow(303.15,65)]
+        [DataRow(0,-253.15)]
+        [TestCategory("temperature")]
+        public void TestKelvintToCelsiusConversionNotEqual(double kelvin, double expectedCelsius)
+        {
+            // Act
+            double celsius = unitsConverter.KelvinToCelsius(kelvin);
+
+            Assert.AreNotEqual(expectedCelsius, celsius, 0.01); // Use uma margem de erro pequena (0.01) devido a arredondamentos
         }
 
         [DataTestMethod]

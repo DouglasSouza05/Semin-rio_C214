@@ -65,7 +65,7 @@ jobs:
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
       - name: Generating report tests
-        run: reportgenerator "-reports:${WORKSPACE}/ConversorDeUnidades/TestResults/coverage.lcov" "-targetdir:${WORKSPACE}/CodeCoverageReport" -reporttypes:Html
+        run: reportgenerator -reports:**/coverage.opencover.xml -targetdir:./src.Tests/coverage_reports --reporttypes:Html
 
 
       # - name: Creating Artifact
