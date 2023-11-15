@@ -70,11 +70,17 @@ jobs:
              reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
 
 
-      # - name: Creating Artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: TestResults
-      #     path: ConversorDeUnidades/src.Tests/TestResults
+      - name: Creating Artifact
+        run: |
+            cd ConversorDeUnidades
+            cd src.Tests
+            cd TestResults
+            ls
+            
+        # uses: actions/upload-artifact@v3
+        # with:
+        #   name: TestResults
+        #   path: ConversorDeUnidades/src.Tests/TestResults
 
       # - name: Creating Test Report
       #   run: |
