@@ -46,8 +46,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: TestResults
-          path: ConversorDeUnidades/src.Tests/TestResults/*
-          
+          path: ConversorDeUnidades/src.Tests/coverage_reports/*
+
   build:
     needs: test
     runs-on: ubuntu-latest
