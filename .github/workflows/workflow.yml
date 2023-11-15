@@ -12,33 +12,6 @@ env:
   DOTNET_VERSION: '6.0.401' # The .NET SDK version to use
 
 jobs:
-  build:
-    
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: Install dependencies
-        run: |
-            cd ConversorDeUnidades
-            dotnet restore
-      
-      - name: Build
-        run: |
-            cd ConversorDeUnidades
-            dotnet build --configuration Release
-            ls
-
-      - name: Creating Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dll
-          path: ConversorDeUnidades/src/bin/Release/net7.0/*.dll
 
   test:
     runs-on: ubuntu-latest
@@ -69,18 +42,40 @@ jobs:
              cd ConversorDeUnidades
              reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
 
-
       - name: Creating Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: TestResults
+          path: ConversorDeUnidades/src.Tests/TestResults/*
+          
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+          
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: Install dependencies
         run: |
             cd ConversorDeUnidades
-            cd src.Tests
-            cd TestResults
+            dotnet restore
+                
+      - name: Build
+        run: |
+            cd ConversorDeUnidades
+            dotnet build --configuration Release
             ls
+          
+      - name: Creating Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dll
+          path: ConversorDeUnidades/src/bin/Release/net7.0/*.dll
             
-        # uses: actions/upload-artifact@v3
-        # with:
-        #   name: TestResults
-        #   path: ConversorDeUnidades/src.Tests/TestResults
 
       # - name: Creating Test Report
       #   run: |
