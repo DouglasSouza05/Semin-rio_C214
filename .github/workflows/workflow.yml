@@ -69,7 +69,7 @@ jobs:
             cd ConversorDeUnidades
             dotnet build --configuration Release
             cd src.WinForms
-            ls
+            ls -a
             cd bin
             cd Debug
           
