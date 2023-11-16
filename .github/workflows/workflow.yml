@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: [ '7.0.x', '6.0.x' ]
+        dotnet-version: [ '7.0.x' ]
 
     # needs: build
 
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: [ '7.0.x', '6.0.x' ]
+        dotnet-version: [ '7.0.x' ]
 
     steps:
       - uses: actions/checkout@v3
@@ -79,6 +79,8 @@ jobs:
             dotnet restore
             dotnet build
             cd bin
+            cd Debug
+            cd net7.0
             ls
           
       - name: Creating Artifact
