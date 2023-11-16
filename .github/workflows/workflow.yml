@@ -77,11 +77,9 @@ jobs:
             cd src.WinForms
             dotnet --version
             dotnet restore
+            dotnet publish -c Release -r ubuntu-latest
             dotnet build
-            cd bin
-            cd Debug
-            cd net7.0-windows
-            ls
+
           
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
