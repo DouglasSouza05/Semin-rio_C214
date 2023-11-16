@@ -73,7 +73,7 @@ jobs:
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: dll
+          name: Conversor de Unidades
           path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/*.exe
             
 
