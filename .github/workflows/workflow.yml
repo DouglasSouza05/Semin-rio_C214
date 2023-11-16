@@ -8,10 +8,10 @@ env:
 jobs:
 
   test:
-    runs-on: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        dotnet-version: [ '7.0.x' ]
+        os: [ubuntu-latest, windows-latest]
 
     # needs: build
 
@@ -48,10 +48,10 @@ jobs:
 
   build:
     # needs: test
-    runs-on: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        dotnet-version: [ '7.0.x' ]
+        os: [ubuntu-latest, windows-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -77,10 +77,4 @@ jobs:
         with:
           name: Conversor de Unidades
           path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/
-            
-
-      # - name: Creating Test Report
-      #   run: |
-      #     dotnet tool install -g dotnet-reportgenerator-globaltool
-      #     reportgenerator -reports:ConversorDeUnidades/src/bin/Release/net7.0/coverage.json -targetdir:report
 
