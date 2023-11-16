@@ -74,7 +74,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Conversor de Unidades
-          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/*.exe
+          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0/*.exe
             
 
       # - name: Creating Test Report
