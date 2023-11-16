@@ -69,11 +69,8 @@ jobs:
             cd ConversorDeUnidades
             cd src.WinForms
             dotnet restore
-            dotnet build --configuration Release
-            cd src.WinForms
-            ls -a
-            cd bin
-            cd Debug
+            dotnet build
+            ls
           
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
