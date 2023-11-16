@@ -9,12 +9,16 @@ on:
       - '**.csproj'
 
 env:
-  DOTNET_VERSION: '7.0.403' # The .NET SDK version to use
+  DOTNET_VERSION: ['7.0.x', ''] # The .NET SDK version to use
 
 jobs:
 
   test:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '7.0.x', '6.0.x' ]
+
     # needs: build
 
     steps:
@@ -22,7 +26,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-version: ${{ matrix.dotnet-version }}
 
       - name: Install dependencies
         run: |
@@ -51,13 +55,16 @@ jobs:
   build:
     # needs: test
     runs-on: windows-latest
-          
+    strategy:
+      matrix:
+        dotnet-version: [ '7.0.x', '6.0.x' ]
+
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-version: ${{ matrix.dotnet-version }}
           
       - name: Install dependencies
         run: |
@@ -71,6 +78,7 @@ jobs:
             dotnet --version
             dotnet restore
             dotnet build
+            cd bin
             ls
           
       - name: Creating Artifact
