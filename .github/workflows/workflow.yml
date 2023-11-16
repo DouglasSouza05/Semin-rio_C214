@@ -80,14 +80,14 @@ jobs:
             dotnet build
             cd bin
             cd Debug
+            cd net7.0-windows
             ls
-            cd net7.0
           
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Conversor de Unidades
-          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0/*.exe
+          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/*.exe
             
 
       # - name: Creating Test Report
