@@ -38,7 +38,7 @@ jobs:
       - name: Generating report tests
         run: |
              cd ConversorDeUnidades
-             reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
+             reportgenerator -reports:./src.Tests/TestResults/coverage.json -targetdir:./src.Tests/coverage_reports --reporttypes:Html
 
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
