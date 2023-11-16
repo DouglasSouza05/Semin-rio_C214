@@ -69,7 +69,7 @@ jobs:
             cd ConversorDeUnidades
             cd src.WinForms
             dotnet restore
-            dotnet build
+            dotnet run
             ls
           
       - name: Creating Artifact
