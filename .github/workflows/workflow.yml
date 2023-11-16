@@ -30,8 +30,7 @@ jobs:
       - name: Run tests
         run: |
             cd ConversorDeUnidades
-            cd src.Tests
-            dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults/ --logger "trx;LogFileName=testresults.xml"
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov
 
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
@@ -39,7 +38,7 @@ jobs:
       - name: Generating report tests
         run: |
              cd ConversorDeUnidades
-             reportgenerator -reports:./src.Tests/TestResults/testresults.xml -targetdir:./src.Tests/coverage_reports --reporttypes:Html
+             reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
 
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
