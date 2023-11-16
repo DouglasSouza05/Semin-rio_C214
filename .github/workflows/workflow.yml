@@ -68,6 +68,7 @@ jobs:
         run: |
             cd ConversorDeUnidades
             cd src.WinForms
+            dotnet restore
             dotnet build --configuration Release
             cd src.WinForms
             ls -a
