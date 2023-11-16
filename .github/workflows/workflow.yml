@@ -68,6 +68,7 @@ jobs:
         run: |
             cd ConversorDeUnidades
             cd src.WinForms
+            dotnet --version
             dotnet restore
             dotnet run
             ls
