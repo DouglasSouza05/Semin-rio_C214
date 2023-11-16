@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: |
             cd ConversorDeUnidades
-            cd src.Test
+            cd src.Tests
             dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults/ --logger "trx;LogFileName=testresults.xml"
 
       - name: Install report generator
