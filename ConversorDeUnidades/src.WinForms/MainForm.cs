@@ -52,7 +52,6 @@ namespace WinForms.Aplication {
             InitializeComponent();
 
             CreateComponents();
-            LabelFonts();
 
             mainComboBox.Items.AddRange(mainOptions.ToArray());
 
@@ -60,7 +59,7 @@ namespace WinForms.Aplication {
             converterButton.BackColor = ColorTranslator.FromHtml("#FFFFFF");
 
             LabelTexts();
-            LabelColors();
+            LabelProperties();
             ComboBoxLocations();
             ComboBoxAdd();
 
@@ -81,33 +80,24 @@ namespace WinForms.Aplication {
             resultLabel = new Label();
         }
 
-        private void LabelFonts() {
-            mainLabel.Font = new Font("Calibri", 18);
-            unitLabel.Font = new Font("Calibri", 18);
-            valueLabel.Font = new Font("Calibri", 18);
-            resultLabel.Font = new Font("Calibri", 18);
-        }
-
-        private void SetLabelProperties(Label label) {
-            label.AutoSize = true;
-        }
-
         private void LabelTexts() {
             mainLabel.Text = "Selecione o tipo de Conversão desejada:";
             unitLabel.Text = "Selecione as Unidades:";
             valueLabel.Text = "Entre com o Valor a ser Convertido:";
             resultLabel.Text = "Resultado da Conversão:";
+        }
+
+        private void SetLabelProperties(Label label) {
+            label.AutoSize = true;
+            label.Font = new Font("Calibri", 18);
+            label.ForeColor = ColorTranslator.FromHtml("#FF69B4");
+        }
+
+        private void LabelProperties() {
             SetLabelProperties(mainLabel);
             SetLabelProperties(unitLabel);
             SetLabelProperties(valueLabel);
             SetLabelProperties(resultLabel);
-        }
-
-        private void LabelColors() {
-            mainLabel.ForeColor = ColorTranslator.FromHtml("#FF69B4");
-            unitLabel.ForeColor = ColorTranslator.FromHtml("#FF69B4");
-            valueLabel.ForeColor = ColorTranslator.FromHtml("#FF69B4");
-            resultLabel.ForeColor = ColorTranslator.FromHtml("#FF69B4");
         }
 
         private void ComboBoxClear() {
