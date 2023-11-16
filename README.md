@@ -10,7 +10,6 @@ Eduardo Costa Resende - GES - 200\
 Douglas Brandão de Souza - GEC - 1730\
 Gabriel Magalhães Reis - GEC - 1737
 
-
 Neste seminário será apresentado o MSTest, uma ferramenta de testes unitários desenvolvida pela Microsoft e fornecida com o Visual Studio. Antes de começar a falar sobre a ferramenta vamos fazer as instalações.
 
 ## Instalar VScode
