@@ -77,7 +77,7 @@ jobs:
             cd src.WinForms
             dotnet --version
             dotnet restore
-            dotnet publish -c Release -r ubuntu-latest
+            dotnet publish -c Release -r ubuntu.20.04-x64
             dotnet build
 
           
