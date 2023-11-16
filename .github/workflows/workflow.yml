@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: |
             cd ConversorDeUnidades
-            dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=json
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov
 
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
