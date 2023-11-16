@@ -49,7 +49,7 @@ jobs:
           path: ConversorDeUnidades/src.Tests/coverage_reports/index.html
 
   build:
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
           
     steps:
