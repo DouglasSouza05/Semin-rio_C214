@@ -74,7 +74,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dll
-          path: ConversorDeUnidades/src/bin/Release/net7.0/*.dll
+          path: ConversorDeUnidades/src/bin/Release/net7.0/*
             
 
       # - name: Creating Test Report
