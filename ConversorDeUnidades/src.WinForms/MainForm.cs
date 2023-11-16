@@ -8,6 +8,7 @@ namespace WinForms.Aplication {
     public partial class MainForm : Form {
 
         Units units = new Units();
+        Config config = new Config();
 
         private ComboBox mainComboBox;
         private ComboBox fromComboBox;
@@ -18,42 +19,12 @@ namespace WinForms.Aplication {
         private Label mainLabel, unitLabel, valueLabel, resultLabel;
         string mainUnit;
 
-        List<string> mainOptions = new List<string> { "Temperature", "Length", "Time", "Mass" };
-
-        List<string> tempOptions = new List<string>
-        {
-            "Celsius",
-            "Fahrenheit",
-            "Kelvin"
-        };
-
-        List<string> lengthOptions = new List<string>
-        {
-            "Meters",
-            "Kilometers",
-            "Feet"
-        };
-
-        List<string> timeOptions = new List<string>
-        {
-            "Seconds",
-            "Hours",
-            "Days",
-        };
-
-        List<string> massOptions = new List<string>
-        {
-            "Grams",
-            "Kilograms",
-            "Pounds"
-        };
-
         public MainForm() {
             InitializeComponent();
 
             CreateComponents();
 
-            mainComboBox.Items.AddRange(mainOptions.ToArray());
+            mainComboBox.Items.AddRange(config.mainOptions.ToArray());
 
             converterButton.Text = "Converter";
             converterButton.BackColor = ColorTranslator.FromHtml("#FFFFFF");
@@ -87,17 +58,11 @@ namespace WinForms.Aplication {
             resultLabel.Text = "Resultado da Conversão:";
         }
 
-        private void SetLabelProperties(Label label) {
-            label.AutoSize = true;
-            label.Font = new Font("Calibri", 18);
-            label.ForeColor = ColorTranslator.FromHtml("#FF69B4");
-        }
-
         private void LabelProperties() {
-            SetLabelProperties(mainLabel);
-            SetLabelProperties(unitLabel);
-            SetLabelProperties(valueLabel);
-            SetLabelProperties(resultLabel);
+            config.SetLabelProperties(mainLabel);
+            config.SetLabelProperties(unitLabel);
+            config.SetLabelProperties(valueLabel);
+            config.SetLabelProperties(resultLabel);
         }
 
         private void ComboBoxClear() {
@@ -140,22 +105,22 @@ namespace WinForms.Aplication {
 
             if (selectedOption == "Temperature")
             {
-                fromComboBox.Items.AddRange(tempOptions.ToArray());
-                toComboBox.Items.AddRange(tempOptions.ToArray());
+                fromComboBox.Items.AddRange(config.tempOptions.ToArray());
+                toComboBox.Items.AddRange(config.tempOptions.ToArray());
             }
             else if (selectedOption == "Length")
             {
-                fromComboBox.Items.AddRange(lengthOptions.ToArray());
-                toComboBox.Items.AddRange(lengthOptions.ToArray());
+                fromComboBox.Items.AddRange(config.lengthOptions.ToArray());
+                toComboBox.Items.AddRange(config.lengthOptions.ToArray());
             }else if (selectedOption == "Time")
             {
-                fromComboBox.Items.AddRange(timeOptions.ToArray());
-                toComboBox.Items.AddRange(timeOptions.ToArray());
+                fromComboBox.Items.AddRange(config.timeOptions.ToArray());
+                toComboBox.Items.AddRange(config.timeOptions.ToArray());
             }
             else if (selectedOption == "Mass")
             {
-                fromComboBox.Items.AddRange(massOptions.ToArray());
-                toComboBox.Items.AddRange(massOptions.ToArray());
+                fromComboBox.Items.AddRange(config.massOptions.ToArray());
+                toComboBox.Items.AddRange(config.massOptions.ToArray());
             }
         }
 
