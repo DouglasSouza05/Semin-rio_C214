@@ -1,20 +1,14 @@
 name: build
 
-on:
-  push:
-  pull_request:
-    branches: [main]
-    paths:
-      - '**.cs'
-      - '**.csproj'
+on: [push]
 
-# env:
-#   DOTNET_VERSION: ['7.0.x', ''] # The .NET SDK version to use
+env:
+  DOTNET_VERSION: '7.0.x' # The .NET SDK version to use
 
 jobs:
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, windows-latest]
     strategy:
       matrix:
         dotnet-version: [ '7.0.x' ]
@@ -26,7 +20,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Install dependencies
         run: |
@@ -54,7 +48,7 @@ jobs:
 
   build:
     # needs: test
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, windows-latest]
     strategy:
       matrix:
         dotnet-version: [ '7.0.x' ]
@@ -64,7 +58,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: ${{ env.DOTNET_VERSION }}
           
       - name: Install dependencies
         run: |
@@ -75,12 +69,9 @@ jobs:
         run: |
             cd ConversorDeUnidades
             cd src.WinForms
-            dotnet --version
             dotnet restore
-            dotnet publish -c Release -r ubuntu.20.04-x64
             dotnet build
 
-          
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
