@@ -68,6 +68,9 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet build --configuration Release
+            cd src.WinForms
+            cd bin
+            cd Debug
             ls
           
       - name: Creating Artifact
