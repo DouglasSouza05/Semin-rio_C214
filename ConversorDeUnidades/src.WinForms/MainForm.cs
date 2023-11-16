@@ -17,14 +17,17 @@ namespace WinForms.Aplication {
         private TextBox inputTextBox;
         private TextBox resultTextBox;
         private Label mainLabel, unitLabel, valueLabel, resultLabel;
-        string mainUnit;
+        public string mainUnit;
 
         public MainForm() {
             InitializeComponent();
 
             CreateComponents();
 
-            mainComboBox.Items.AddRange(config.mainOptions.ToArray());
+            if (config.mainOptions != null)
+            {
+                mainComboBox.Items.AddRange(config.mainOptions.ToArray());
+            }
 
             converterButton.Text = "Converter";
             converterButton.BackColor = ColorTranslator.FromHtml("#FFFFFF");
@@ -98,26 +101,27 @@ namespace WinForms.Aplication {
             Controls.Add(resultLabel);
         }
 
-        private void ComboBoxSelectedItem(object sender, EventArgs e)
+        private void ComboBoxSelectedItem(object? sender, EventArgs e)
         {
-            string selectedOption = mainComboBox.SelectedItem.ToString();
+            string selectedOption = mainComboBox.SelectedItem?.ToString() ?? "Default";
             ComboBoxClear();
 
-            if (selectedOption == "Temperature")
+            if (selectedOption == "Temperature" && config.tempOptions != null)
             {
                 fromComboBox.Items.AddRange(config.tempOptions.ToArray());
                 toComboBox.Items.AddRange(config.tempOptions.ToArray());
             }
-            else if (selectedOption == "Length")
+            else if (selectedOption == "Length" && config.lengthOptions != null)
             {
                 fromComboBox.Items.AddRange(config.lengthOptions.ToArray());
                 toComboBox.Items.AddRange(config.lengthOptions.ToArray());
-            }else if (selectedOption == "Time")
+            }
+            else if (selectedOption == "Time" && config.timeOptions != null)
             {
                 fromComboBox.Items.AddRange(config.timeOptions.ToArray());
                 toComboBox.Items.AddRange(config.timeOptions.ToArray());
             }
-            else if (selectedOption == "Mass")
+            else if (selectedOption == "Mass" && config.massOptions != null)
             {
                 fromComboBox.Items.AddRange(config.massOptions.ToArray());
                 toComboBox.Items.AddRange(config.massOptions.ToArray());
@@ -125,13 +129,9 @@ namespace WinForms.Aplication {
         }
 
         private void ConverterButtonClick(object? sender, EventArgs e) {
-            string fromUnit = fromComboBox.SelectedItem.ToString();
-            string toUnit = toComboBox.SelectedItem.ToString();
 
-            if (mainComboBox.SelectedItem == null || fromComboBox.SelectedItem == null || toComboBox.SelectedItem == null) {
-                resultTextBox.Text = "Selecione as unidades de Conversão!";
-                return;
-            }
+            string fromUnit = fromComboBox.SelectedItem?.ToString() ?? "Default";
+            string toUnit = toComboBox.SelectedItem?.ToString() ?? "Default";
 
             // Converte o valor de texto de entrada para um número. TryParse retorna um valor booleano caso haja sucesso (True)
             if (double.TryParse(inputTextBox.Text, out double inputValue)) {
@@ -148,7 +148,7 @@ namespace WinForms.Aplication {
 
         private double ConvertUnits(string fromUnit, string toUnit, double value) {
 
-            mainUnit = mainComboBox.SelectedItem.ToString();
+            mainUnit = mainComboBox.SelectedItem?.ToString() ?? "Default";
 
             if (mainUnit == null || fromUnit == null || toUnit == null) {
                 return value;
