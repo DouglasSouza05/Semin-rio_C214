@@ -27,16 +27,24 @@ jobs:
             cd ConversorDeUnidades
             dotnet restore
         
-      - name: Test with dotnet
+      - name: Run tests
         run: |
-          cd ConversorDeUnidades
-          dotnet test --logger trx --results-directory "TestResults-${{ env.DOTNET_VERSION }}"
-      
-      - name: Upload dotnet test results
+            cd ConversorDeUnidades
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov
+
+      - name: Install report generator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Generating report tests
+        run: |
+             cd ConversorDeUnidades
+             reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
+
+      - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: dotnet-results-${{ env.DOTNET_VERSION }}
-          path: TestResults-${{ env.DOTNET_VERSION }}
+          name: TestResults
+          path: ConversorDeUnidades/src.Tests/coverage_reports/index.html
 
   build:
     # needs: test
