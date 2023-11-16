@@ -2,7 +2,14 @@
 
 # Seminário_C214
 
-Seminário da Matéria de Engenharia de Software
+Seminário da Matéria de Engenharia de Software.
+
+Integrantes:
+
+Eduardo Costa Resende - GES - 200\
+Douglas Brandão de Souza - GEC - 1730\
+Gabriel Magalhães Reis - GEC - 1737
+
 
 Neste seminário será apresentado o MSTest, uma ferramenta de testes unitários desenvolvida pela Microsoft e fornecida com o Visual Studio. Antes de começar a falar sobre a ferramenta vamos fazer as instalações.
 
@@ -36,7 +43,7 @@ Neste seminário será apresentado o MSTest, uma ferramenta de testes unitários
 
 8. Verifique se um número de versão do .NET 7 está listado.
 
-## Instalar extensão C# no VScode
+## Instalar Extensão C# no VScode
 
 1. Verifique se o Visual Studio Code está aberto.
 
@@ -55,7 +62,7 @@ Neste seminário será apresentado o MSTest, uma ferramenta de testes unitários
    IntelliCode para C# – desenvolvimento assistido por IA para Kit de desenvolvimento em C#.
    Ferramenta de instalação do .NET para autores de extensão.
 
-# Criando o projeto
+# Criando o Projeto
 
 1. No prompt de comando, digite: dotnet new console -o ./CsharpProjects/TestProject e pressione a tecla Enter.
    - O driver: dotnet neste exemplo.
@@ -66,7 +73,7 @@ Observação
 
 Os argumentos de comando são parâmetros opcionais que podem ser usados para fornecer mais informações. O comando anterior pôde ser executado sem especificar o local de pasta opcional. Por exemplo: dotnet new console. Neste caso, o novo aplicativo de console seria criado no local da pasta atual.
 
-## Adionando a dependência do MSTest
+## Adicionando a Dependência do MSTest
 
 1. No prompt de comando, digite: dotnet add package MSTest.TestFramework --version 3.1.1 e pressione a tecla Enter.
 
@@ -76,4 +83,24 @@ Os argumentos de comando são parâmetros opcionais que podem ser usados para fo
     <ItemGroup>
       <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
     </ItemGroup>
+```
+
+## Rodando a Suíte de Testes
+
+1. Entrar na pasta "ConversorDeUnidades"
+
+2. Rodar o comando:
+
+```
+   dotnet test
+```
+
+## Executando a User Interface do Conversor de Unidades
+
+1. Entrar na pasta "src.WinForms"
+
+2. Rodar o comando:
+
+```
+   dotnet run
 ```
