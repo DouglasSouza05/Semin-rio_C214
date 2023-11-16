@@ -14,7 +14,7 @@ on:
 jobs:
 
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         dotnet-version: [ '7.0.x' ]
@@ -54,7 +54,7 @@ jobs:
 
   build:
     # needs: test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         dotnet-version: [ '7.0.x' ]
@@ -87,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Conversor de Unidades
-          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/src.WinForms.exe
+          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/
             
 
       # - name: Creating Test Report
