@@ -9,7 +9,7 @@ on:
       - '**.csproj'
 
 env:
-  DOTNET_VERSION: '7.0.200' # The .NET SDK version to use
+  DOTNET_VERSION: '7.0.403' # The .NET SDK version to use
 
 jobs:
 
@@ -70,7 +70,7 @@ jobs:
             cd src.WinForms
             dotnet --version
             dotnet restore
-            dotnet run
+            dotnet build
             ls
           
       - name: Creating Artifact
