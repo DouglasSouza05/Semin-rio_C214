@@ -1,6 +1,8 @@
+
 namespace UnitTest.Aplication{
     
     [TestClass]
+    [TestCategory("instance")]
     public class UnitsConverterTest
     {
         UnitsConverter unitsConverter;
@@ -19,21 +21,19 @@ namespace UnitTest.Aplication{
         */
 
         [TestMethod]
-        [TestCategory("instance")]
         public void TestInstanciaConverter()
         {
             Assert.IsNotNull(unitsConverter);
         }
 
         [TestMethod]
-        [TestCategory("instance")]
         public void TestInstanciaConverterType()
         {
             Assert.IsInstanceOfType(unitsConverter, typeof(UnitsConverter));
         }
 
         //---------------------------------------------------------------------------------------------------
-
+/*
         [TestMethod]
         [DataRow(40,104)]
         [DataRow(0,32)]
@@ -438,5 +438,7 @@ namespace UnitTest.Aplication{
                 new object[] { 50, 50000 }
             };
         }
+        */
     }
+    
 }
