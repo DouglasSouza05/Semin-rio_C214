@@ -68,6 +68,11 @@ namespace Core.Aplication{
 
         public double SecondsToHours(double seconds)
         {
+            if (seconds < 0)
+            {
+                throw new ArgumentException("O valor dos segundos não pode ser negativo.");
+            }
+
             return seconds / 3600;
         }
 

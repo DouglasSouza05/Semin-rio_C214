@@ -312,6 +312,18 @@ namespace UnitTest.Aplication{
         }
 
         [TestMethod]
+        [DataRow(-3600)]
+        [TestCategory("time")]
+        [TestCategory("exception")]
+        public void TestNegativeSecondsToHoursConversion(double seconds)
+        {
+            // Assert
+            var exc = Assert.ThrowsException<ArgumentException>(() => unitsConverter.SecondsToHours(seconds));
+
+            Assert.AreEqual("O valor dos segundos não pode ser negativo.", exc.Message);
+        }
+
+        [TestMethod]
         [DataRow(100,360000)]
         [TestCategory("time")]
         public void TestHoursToSecondsConversion(double hours, double expectedSeconds)
