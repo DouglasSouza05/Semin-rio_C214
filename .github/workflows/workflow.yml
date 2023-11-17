@@ -31,7 +31,6 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov
-
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
@@ -39,7 +38,6 @@ jobs:
         run: |
              cd ConversorDeUnidades
              reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
-
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -71,10 +69,8 @@ jobs:
             cd src.WinForms
             dotnet restore
             dotnet build
-
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Conversor de Unidades
           path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/
-
