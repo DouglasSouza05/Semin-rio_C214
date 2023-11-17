@@ -7,13 +7,44 @@ env:
 
 jobs:
 
+  build:
+    # needs: test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: Install dependencies
+        run: |
+            cd ConversorDeUnidades
+            dotnet restore
+                
+      - name: Build
+        run: |
+            cd ConversorDeUnidades
+            cd src.WinForms
+            dotnet restore
+            dotnet build
+      - name: Creating Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Conversor de Unidades
+          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/
+
   test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
 
-    # needs: build
+    needs: build
 
     steps:
       - uses: actions/checkout@v3
@@ -43,34 +74,3 @@ jobs:
         with:
           name: TestResults
           path: ConversorDeUnidades/src.Tests/coverage_reports/
-
-  build:
-    needs: test
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-          
-      - name: Install dependencies
-        run: |
-            cd ConversorDeUnidades
-            dotnet restore
-                
-      - name: Build
-        run: |
-            cd ConversorDeUnidades
-            cd src.WinForms
-            dotnet restore
-            dotnet build
-      - name: Creating Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Conversor de Unidades
-          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/
