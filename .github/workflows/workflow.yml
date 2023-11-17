@@ -31,10 +31,10 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov
-
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
+# https://github.com/danielpalme/ReportGenerator
       - name: Generating report tests
         run: |
              cd ConversorDeUnidades
@@ -47,7 +47,7 @@ jobs:
           path: ConversorDeUnidades/src.Tests/coverage_reports/
 
   build:
-    # needs: test
+    needs: test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -77,4 +77,3 @@ jobs:
         with:
           name: Conversor de Unidades
           path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/
-
