@@ -30,9 +30,7 @@ jobs:
       - name: Run tests
         run: |
             cd ConversorDeUnidades
-            dotnet build
             dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov
-
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
@@ -71,6 +69,7 @@ jobs:
             cd src.WinForms
             dotnet restore
             dotnet build
+            
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
