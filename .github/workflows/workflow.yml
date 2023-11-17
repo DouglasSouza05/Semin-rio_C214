@@ -34,12 +34,10 @@ jobs:
       - name: Install report generator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
-# https://github.com/danielpalme/ReportGenerator
       - name: Generating report tests
         run: |
              cd ConversorDeUnidades
              reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
-
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -71,7 +69,6 @@ jobs:
             cd src.WinForms
             dotnet restore
             dotnet build
-
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
         with:
