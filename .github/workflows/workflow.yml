@@ -68,7 +68,7 @@ jobs:
             cd ConversorDeUnidades
             cd src.WinForms
             dotnet restore
-            
+
             # Adicionando a etapa condicional de publicação
             if [ "${{ runner.os }}" == "Windows" ]; then
               dotnet publish -c Release -r win10-x64
