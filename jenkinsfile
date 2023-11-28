@@ -20,13 +20,17 @@ pipeline {
             }
         }
 
-        // stage('Build') {
-        //     steps {
-        //         echo "Buildando o projeto e gerando o artefato da build"
-        //         sh "dotnet run"
-        //         archiveArtifacts '.pio/build/native/program'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                dir(ConversorDeUnidades){
+                    sh "dotnet restore"
+                    dir('src.WinForms'){
+                        sh "dotnet build"
+                    }
+                }
+                archiveArtifacts 'ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/**'
+            }
+        }
 
         // stage('Notify'){
         //     steps{
