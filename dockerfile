@@ -14,6 +14,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y dotnet-sdk-7.0
 
+RUN apt-get install -y mailutils
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 
 ENV PATH="${PATH}:/var/jenkins_home/.dotnet/tools"
