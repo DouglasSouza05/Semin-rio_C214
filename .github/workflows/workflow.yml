@@ -68,16 +68,7 @@ jobs:
             cd ConversorDeUnidades
             cd src.WinForms
             dotnet restore
-
-            # Adicionando a etapa condicional de publicação
-            if [ "${{ runner.os }}" == "Windows" ]; then
-              dotnet publish -c Release -r win10-x64
-            elif [ "${{ runner.os }}" == "Linux" ]; then
-              dotnet publish -c Release -r linux-x64
-            else
-              echo "Sistema operacional não suportado"
-              exit 1
-            fi
+            dotnet build
             
       - name: Creating Artifact
         uses: actions/upload-artifact@v3
