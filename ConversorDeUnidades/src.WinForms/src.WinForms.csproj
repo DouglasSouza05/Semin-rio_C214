@@ -2,21 +2,32 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
     <!-- Adicione quaisquer outras referências específicas do Windows aqui -->
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-linux'">
+    <TargetFramework>net7.0</TargetFramework>
     <!-- Adicione quaisquer referências específicas do Linux aqui -->
   </ItemGroup>
+
+  <!-- Descomente esta seção se precisar de referências para testes -->
+  <!--
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
+    <PackageReference Include="coverlet.collector" Version="3.2.0" />
+  </ItemGroup>
+  -->
 
   <ItemGroup>
     <ProjectReference Include="..\src\src.csproj" />
