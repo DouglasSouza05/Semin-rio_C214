@@ -12,7 +12,8 @@ pipeline {
                 echo "Rodando os Testes e gerando o relatorio de testes"
                 sh "dotnet restore ConversorDeUnidades/src.Tests/src.Tests.csproj"
                 sh "dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov ConversorDeUnidades/src.Tests/src.Tests.csproj"
-
+                echo "Mostrando onde esta o Report Generator"
+                sh "which reportgenerator"
                 echo "Gerando o relatorio de testes em HTML"
                 sh "reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:/src.Tests/coverage_reports/ --reporttypes:Html"
 

@@ -16,6 +16,7 @@ RUN apt-get update \
 
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 
+RUN chmod -R 777 /bin/dotnet
 # Volte para o usuário Jenkins
 USER jenkins
 
