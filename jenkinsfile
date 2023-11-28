@@ -22,7 +22,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir(ConversorDeUnidades){
+                dir('ConversorDeUnidades'){
                     sh "dotnet restore"
                     dir('src.WinForms'){
                         sh "dotnet build"
