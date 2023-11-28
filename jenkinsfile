@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+
+    environment {
+        EMAIL_LIST = "eduardo.costa@ges.inatel.br"
+    }
+
+    stages {
+
+        stage('Test'){
+            steps{
+                def testResultsPath = "${projectPath}/src.Tests/coverage_reports/"
+
+                echo "Rodando os Testes e gerando o relatorio de testes"
+                sh "cd ConversorDeUnidades"
+                sh "dotnet restore"
+                sh "dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov"
+
+                echo "Instalando o ReportGenerator"
+                sh "dotnet tool install --global dotnet-reportgenerator-globaltool"
+
+                echo "Gerando o relatorio de testes em HTML"
+                sh "reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:${testResultsPath} --reporttypes:Html"
+
+                archiveArtifacts 'ConversorDeUnidades/src.Tests/coverage_reports/'
+            }
+        }
+
+        // stage('Build') {
+        //     steps {
+        //         echo "Buildando o projeto e gerando o artefato da build"
+        //         sh "dotnet run"
+        //         archiveArtifacts '.pio/build/native/program'
+        //     }
+        // }
+
+        // stage('Notify'){
+        //     steps{
+        //         echo "Notificando"
+        //         sh '''
+        //            cd scripts
+        //            ls
+        //            chmod 775 *
+        //            ./jenkins.sh
+        //            '''
+        //     }
+        // }
+    }
+}
