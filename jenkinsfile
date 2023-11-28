@@ -17,7 +17,7 @@ pipeline {
                 sh "dotnet tool install --global dotnet-reportgenerator-globaltool"
 
                 echo "Gerando o relatorio de testes em HTML"
-                sh "reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:/src.Tests/coverage_reports/ --reporttypes:Html"
+                sh "dotnet reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:/src.Tests/coverage_reports/ --reporttypes:Html"
 
                 archiveArtifacts 'ConversorDeUnidades/src.Tests/coverage_reports/'
             }
