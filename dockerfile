@@ -14,6 +14,8 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y dotnet-sdk-7.0
 
+RUN dotnet tool install --global dotnet-reportgenerator-globaltool
+
 # Volte para o usuário Jenkins
 USER jenkins
 
