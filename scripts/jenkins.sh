@@ -1,1 +1,5 @@
-echo "Terminou a execucao do pipeline jenkins" | mail -s "jenkins pipeline" ${EMAIL_LIST}
+echo "Terminou a execução do pipeline Jenkins"
+
+email_list=$1
+
+echo "Enviando e-mail para: ${email_list}"

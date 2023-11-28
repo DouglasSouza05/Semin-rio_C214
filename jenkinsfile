@@ -33,15 +33,17 @@ pipeline {
             }
         }
 
-        stage('Notify'){
-            steps{
-                echo "Notificando"
-                sh '''
-                   cd scripts
-                   ls
-                   chmod 775 *
-                   ./jenkins.sh
-                   '''
+        stage('Notify') {
+            steps {
+                script {
+                    echo "Notificando"
+                    sh '''
+                        cd scripts
+                        ls
+                        chmod 775 *
+                        ./jenkins.sh "${EMAIL_LIST}"
+                    '''
+                }
             }
         }
     }
