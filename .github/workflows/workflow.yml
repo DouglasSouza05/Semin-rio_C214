@@ -45,7 +45,7 @@ jobs:
           path: ConversorDeUnidades/src.Tests/coverage_reports/
 
   build:
-    # needs: test
+    needs: test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
