@@ -14,7 +14,7 @@ pipeline {
                 sh "dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov ConversorDeUnidades/src.Tests/src.Tests.csproj"
 
                 echo "Gerando o relatorio de testes em HTML"
-                sh "dotnet reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:/src.Tests/coverage_reports/ --reporttypes:Html"
+                sh "reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:/src.Tests/coverage_reports/ --reporttypes:Html"
 
                 archiveArtifacts 'ConversorDeUnidades/src.Tests/coverage_reports/'
             }
