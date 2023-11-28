@@ -1,5 +1,5 @@
 # Use a imagem oficial do Jenkins com suporte ao Docker
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:lts-jdk11
 
 # Mude para o usuário root para instalar dependências
 USER root
