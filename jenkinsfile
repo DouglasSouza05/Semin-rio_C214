@@ -10,9 +10,8 @@ pipeline {
         stage('Test'){
             steps{
                 echo "Rodando os Testes e gerando o relatorio de testes"
-                sh "cd ConversorDeUnidades"
                 sh "dotnet restore ConversorDeUnidades/src.Tests/src.Tests.csproj"
-                sh "dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov"
+                sh "dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov ConversorDeUnidades/src.Tests/src.Tests.csproj"
 
                 echo "Instalando o ReportGenerator"
                 sh "dotnet tool install --global dotnet-reportgenerator-globaltool"
