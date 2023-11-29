@@ -34,7 +34,7 @@ class Program
         using (NpgsqlCommand cmd = new NpgsqlCommand())
         {
             cmd.Connection = conn;
-            cmd.CommandText = "INSERT INTO sua_tabela (medida1, medida2, valor, resultado) VALUES (@medida1, @medida2, @valor, @resultado)";
+            cmd.CommandText = "INSERT INTO conversoes (medida1, medida2, valor, resultado) VALUES (@medida1, @medida2, @valor, @resultado)";
 
             // Parâmetros
             cmd.Parameters.AddWithValue("medida1", medida1);
