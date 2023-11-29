@@ -7,9 +7,9 @@ class Program
     {
         // Substitua as variáveis abaixo com suas informações
         string host = "localhost"; // ou o IP do seu contêiner Docker
-        string database = "seu_banco_de_dados";
-        string username = "seu_usuario";
-        string password = "sua_senha";
+        string database = "BANCO_PADRAO";
+        string username = "TesteInatel";
+        string password = "senhateste123";
         int port = 5432; // Porta padrão do PostgreSQL
 
         // String de conexão
