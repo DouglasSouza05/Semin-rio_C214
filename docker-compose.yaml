@@ -1,17 +1,56 @@
-version: '3.1'
+version: '3.8'
 
 services:
 
-  db:
-    image: postgres
-    restart: always
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
     environment:
-      POSTGRES_PASSWORD: senhateste123
-      POSTGRES_USER: TesteInatel
-      POSTGRES_DB: BANCO_PADRAO
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - /user/Documents/mongodb:/data/db
+    networks:
+      - minha-rede
 
-  adminer:
-    image: adminer
+  mongo-express:
+    image: mongo-express
     restart: always
     ports:
       - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - minha-rede
+    volumes:
+      - ./mongo-express:/mongo-express/
+
+  jenkins_maven:
+    image: chrisslima/s107-jenkins-maven
+    container_name: jenkins
+    privileged: true
+    user: root
+    ports:
+     - 8080:8080
+     - 50000:50000
+    volumes:
+      - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - minha-rede
+
+  meu_servico:
+    image: educr03/dotnet_build:24
+    depends_on:
+      - mongodb
+    ports:
+      - 8083:8083  # Mapeamento de porta (ajuste conforme necessário)
+    networks:
+      - minha-rede
+
+networks:
+  minha-rede:
+    driver: bridge

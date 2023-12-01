@@ -1,65 +1,73 @@
 ﻿using System;
-using Npgsql;
+using MongoDB.Driver;
 
 class Program
 {
     static void Main()
     {
-        // Substitua as variáveis abaixo com suas informações
-        string host = "localhost"; // ou o IP do seu contêiner Docker
-        string database = "BANCO_PADRAO";
-        string username = "TesteInatel";
-        string password = "senhateste123";
-        int port = 5432; // Porta padrão do PostgreSQL
+        // Defina as credenciais
+        var username = "root";
+        var password = "root";
+        var databaseName = "BANCO";
+        // Substitua as variáveis abaixo com suas informações admin:pass
+        string connectionString = "mongodb://mongodb:27017"; // ou o endereço do seu contêiner Docker MongoDB
+        // string databaseName = "BANCO_PADRAO";
+        string collectionName = "conversoes";
 
-        // String de conexão
-        string connString = $"Host={host};Username={username};Password={password};Database={database};Port={port}";
+        var credential = MongoCredential.CreateCredential(databaseName, username, password);
 
-        // Instância da conexão
-        using (NpgsqlConnection conn = new NpgsqlConnection(connString))
+
+        var settings = new MongoClientSettings
         {
-            conn.Open(); // Abre a conexão
+            Credential = credential,
+            Server = new MongoServerAddress("mongobd", 27017)
+        };
 
-            // Insira os dados de exemplo no banco de dados
-            InserirDados(conn, "Metro", "Polegada", 2.54, 5.08); // Exemplo de conversão de 2.54 metros para polegadas
+         var client = new MongoClient(settings);
 
-            // Exiba os dados do banco de dados
-            MostrarDados(conn);
-        }
+        // Obter referência do banco de dados e coleção
+        var database = client.GetDatabase(databaseName);
+        var collection = database.GetCollection<Conversao>(collectionName);
+
+        // Insira os dados de exemplo no banco de dados
+        InserirDados(collection, "Metro", "Polegada", 2.54, 5.08); // Exemplo de conversão de 2.54 metros para polegadas
+
+        // Exiba os dados do banco de dados
+        MostrarDados(collection);
     }
 
     // Método para inserir dados
-    static void InserirDados(NpgsqlConnection conn, string medida1, string medida2, double valor, double resultado)
+    static void InserirDados(IMongoCollection<Conversao> collection, string medida1, string medida2, double valor, double resultado)
     {
-        using (NpgsqlCommand cmd = new NpgsqlCommand())
+        var conversao = new Conversao
         {
-            cmd.Connection = conn;
-            cmd.CommandText = "INSERT INTO conversoes (medida1, medida2, valor, resultado) VALUES (@medida1, @medida2, @valor, @resultado)";
+            Medida1 = medida1,
+            Medida2 = medida2,
+            Valor = valor,
+            Resultado = resultado
+        };
 
-            // Parâmetros
-            cmd.Parameters.AddWithValue("medida1", medida1);
-            cmd.Parameters.AddWithValue("medida2", medida2);
-            cmd.Parameters.AddWithValue("valor", valor);
-            cmd.Parameters.AddWithValue("resultado", resultado);
-
-            // Executa a consulta
-            cmd.ExecuteNonQuery();
-        }
+        collection.InsertOne(conversao);
     }
 
     // Método para exibir dados
-    static void MostrarDados(NpgsqlConnection conn)
+    static void MostrarDados(IMongoCollection<Conversao> collection)
     {
-        using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM sua_tabela", conn))
+        var conversoes = collection.Find(_ => true).ToList();
+
+        Console.WriteLine("Medida1\tMedida2\tValor\tResultado");
+        foreach (var conversao in conversoes)
         {
-            using (NpgsqlDataReader reader = cmd.ExecuteReader())
-            {
-                Console.WriteLine("Medida1\tMedida2\tValor\tResultado");
-                while (reader.Read())
-                {
-                    Console.WriteLine($"{reader.GetString(1)}\t{reader.GetString(2)}\t{reader.GetDouble(3)}\t{reader.GetDouble(4)}");
-                }
-            }
+            Console.WriteLine($"{conversao.Medida1}\t{conversao.Medida2}\t{conversao.Valor}\t{conversao.Resultado}");
         }
     }
+}
+
+// Definição de classe para representar os dados de conversão
+class Conversao
+{
+    public string Medida1 { get; set; }
+    public string Medida2 { get; set; }
+    public double Valor { get; set; }
+    public double Resultado { get; set; }
 }
