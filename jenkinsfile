@@ -14,14 +14,8 @@ pipeline {
                 sh "dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov ConversorDeUnidades/src.Tests/src.Tests.csproj"
 
                 echo "Gerando o relatorio de testes em HTML"
-                
-                script {
-                    // Adiciona o diretório das ferramentas do .NET ao PATH
-                    env.PATH = "/var/jenkins_home/.dotnet/tools:${env.PATH}"
-                    
-                    // Executa o comando reportgenerator
-                    sh "reportgenerator -reports:ConversorDeUnidades/src.Tests/TestResults/coverage.info -targetdir:ConversorDeUnidades/src.Tests/coverage_reports/ --reporttypes:Html"
-                }
+                // find / -name reportgenerator
+                sh "/root/.dotnet/tools/reportgenerator -reports:ConversorDeUnidades/src.Tests/TestResults/coverage.info -targetdir:ConversorDeUnidades/src.Tests/coverage_reports/ --reporttypes:Html"
 
                 archiveArtifacts 'ConversorDeUnidades/src.Tests/coverage_reports/'
             }
