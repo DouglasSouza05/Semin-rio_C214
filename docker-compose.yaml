@@ -43,7 +43,7 @@ services:
       - minha-rede
 
   meu_servico:
-    image: educr03/dotnet_build:24
+    image: educr03/dotnet_build:33
     depends_on:
       - mongodb
     ports:
