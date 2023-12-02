@@ -1,17 +1,25 @@
-# https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
-WORKDIR /app
+# Use a imagem oficial do Jenkins com suporte ao Docker
+FROM jenkins/jenkins:lts-jdk11
 
-# copy csproj and restore as distinct layers
-COPY . ./
-RUN dotnet restore ConversorDeUnidades/src/src.csproj
+# Mude para o usuário root para instalar dependências
+USER root
 
-RUN dotnet publish -c Release -o out ConversorDeUnidades/src/src.csproj
+# Instale o .NET SDK
+RUN apt-get update \
+    && apt-get install -y wget \
+    && wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb \
+    && apt-get update \
+    && apt-get install -y apt-transport-https \
+    && apt-get update \
+    && apt-get install -y dotnet-sdk-7.0
 
-# final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "/app/src.dll"]
+RUN apt-get install -y mailutils
+RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 
-EXPOSE 80
+ENV PATH="${PATH}:/var/jenkins_home/.dotnet/tools"
+
+RUN chmod -R 777 /bin/dotnet
+# Volte para o usuário Jenkins
+USER jenkins
+

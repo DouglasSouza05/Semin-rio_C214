@@ -4,18 +4,20 @@ services:
 
   mongodb:
     image: mongo
+    container_name: mongo-db
     ports:
       - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
-      - /user/Documents/mongodb:/data/db
+      - /user/eduar/Documents/mongodb:/data/db
     networks:
       - minha-rede
 
   mongo-express:
     image: mongo-express
+    container_name: mongo_express
     restart: always
     ports:
       - 8081:8081
@@ -28,28 +30,56 @@ services:
     volumes:
       - ./mongo-express:/mongo-express/
 
-  jenkins_maven:
-    image: chrisslima/s107-jenkins-maven
-    container_name: jenkins
-    privileged: true
-    user: root
+  # jenkins_maven:
+  #   image: chrisslima/s107-jenkins-maven
+  #   container_name: jenkins
+  #   privileged: true
+  #   user: root
+  #   ports:
+  #    - 8080:8080
+  #    - 50000:50000
+  #   volumes:
+  #     - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   networks:
+  #     - minha-rede
+    # command:
+    #   - /bin/bash
+    #   - -c
+    #   - >
+    #     apt-get update &&
+    #     apt-get install -y wget &&
+    #     wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb &&
+    #     dpkg -i packages-microsoft-prod.deb &&
+    #     rm packages-microsoft-prod.deb &&
+    #     apt-get install -y apt-transport-https &&
+    #     apt-get install -y dotnet-sdk-7.0 &&
+    #     apt-get install -y aspnetcore-runtime-7.0 &&
+    #     dotnet tool install --global dotnet-reportgenerator-globaltool &&
+    #     apt-get install -y mailutils
+
+  dotnet-dotnet_build:
+    image: educr03/dotnet_build:33
+    container_name: dotnet_build
+    depends_on:
+      - mongodb
     ports:
-     - 8080:8080
-     - 50000:50000
+      - 8083:8083  # Mapeamento de porta (ajuste conforme necessário)
     volumes:
       - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - minha-rede
 
-  meu_servico:
-    image: educr03/dotnet_build:33
-    depends_on:
-      - mongodb
+  jenkins-dotnet:
+    image: educr03/jenkins_dotnet:1
+    container_name: jenkins
     ports:
-      - 8083:8083  # Mapeamento de porta (ajuste conforme necessário)
+     - 8080:8080
+     - 50000:50000
     networks:
       - minha-rede
+
 
 networks:
   minha-rede:
