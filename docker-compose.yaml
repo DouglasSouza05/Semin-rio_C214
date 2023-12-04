@@ -1,43 +1,43 @@
 version: '3.8'
 
 services:
+
   mongodb:
     image: mongo
     container_name: mongo-db
-    ports:
-      - 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-    volumes:
-      - /user/eduar/Documents/mongodb:/data/db
+      MONGO_INITDB_ROOT_USERNAME: test
+      MONGO_INITDB_ROOT_PASSWORD: test
+    ports:
+      - "27017:27017"
     networks:
-      - minha-rede
+      clusternetwork:
+        ipv4_address: 172.16.0.14
+    volumes:
+        - /user/eduar/Documents/mongodb:/data/db
 
   mongo-express:
     image: mongo-express
-    container_name: mongo_express
     restart: always
     ports:
       - 8081:8081
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root
-      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_ADMINUSERNAME: test
+      ME_CONFIG_MONGODB_ADMINPASSWORD: test
+      ME_CONFIG_MONGODB_SERVER: 172.16.0.14
     networks:
-      - minha-rede
-    volumes:
-      - ./mongo-express:/mongo-express/
+      clusternetwork:
+        ipv4_address: 172.16.0.16
 
-  dotnet-dotnet_build:
-    image: educr03/dotnet_build:33
-    container_name: dotnet_build
-    depends_on:
-      - mongodb
-    ports:
-      - 8083:8083  # Mapeamento de porta (ajuste conforme necessário)
-    networks:
-      - minha-rede
+  # dotnet-dotnet_build:
+  #   image: educr03/dotnet_build:33
+  #   container_name: dotnet_build
+  #   depends_on:
+  #     - mongodb
+  #   ports:
+  #     - 8083:8083  # Mapeamento de porta (ajuste conforme necessário)
+  #   networks:
+  #     - minha-rede
 
   jenkins-dotnet:
     image: educr03/jenkins_dotnet:1
@@ -47,9 +47,24 @@ services:
     ports:
      - 8080:8080
      - 50000:50000
+
+  dotnet_docker:
+    build:
+      dockerfile: dockerfile
+    container_name: dotnet
+    image: dotnet:6
+    depends_on:
+      - mongodb
+    ports:
+      - 8083:8083
     networks:
-      - minha-rede
+      clusternetwork:
+        ipv4_address: 172.16.0.15
 
 networks:
-  minha-rede:
+  clusternetwork:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
