@@ -52,7 +52,7 @@ services:
     build:
       dockerfile: dockerfile
     container_name: dotnet
-    image: dotnet:6
+    image: dotnet:10
     depends_on:
       - mongodb
     ports:

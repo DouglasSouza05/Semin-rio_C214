@@ -1,16 +1,16 @@
 using System;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+
 
 class Program
 {
     static void Main()
     {
-        // Defina as credenciais
-        var username = "root";
-        var password = "root";
         var databaseName = "admin";
         // Substitua as variáveis abaixo com suas informações admin:pass
-        const string connectionString = "mongodb://root:root@mongodb-1:27017/admin"; // ou o endereço do seu contêiner Docker MongoDB
+        const string connectionString = "mongodb://test:test@mongodb:27017/admin"; // ou o endereço do seu contêiner Docker MongoDB
         string collectionName = "conversoes";
 
         // Criar cliente MongoDB
@@ -57,6 +57,10 @@ class Program
 // Definição de classe para representar os dados de conversão
 class Conversao
 {
+
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
     public string Medida1 { get; set; }
     public string Medida2 { get; set; }
     public double Valor { get; set; }
