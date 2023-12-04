@@ -9,7 +9,7 @@ class Program
     static void Main()
     {
         var databaseName = "admin";
-        const string connectionString = "mongodb://test:test@mongodb:27017/admin";
+        const string connectionString = "mongodb://test:test@172.16.0.14:27017/admin";
         string collectionName = "conversoes";
 
         var client = new MongoClient(connectionString);
