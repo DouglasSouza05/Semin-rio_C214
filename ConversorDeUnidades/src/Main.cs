@@ -9,25 +9,18 @@ class Program
     static void Main()
     {
         var databaseName = "admin";
-        // Substitua as variáveis abaixo com suas informações admin:pass
-        const string connectionString = "mongodb://test:test@mongodb:27017/admin"; // ou o endereço do seu contêiner Docker MongoDB
+        const string connectionString = "mongodb://test:test@mongodb:27017/admin";
         string collectionName = "conversoes";
 
-        // Criar cliente MongoDB
         var client = new MongoClient(connectionString);
 
-        // Obter referência do banco de dados e coleção
         var database = client.GetDatabase(databaseName);
         var collection = database.GetCollection<Conversao>(collectionName);
 
-        // Insira os dados de exemplo no banco de dados
-        InserirDados(collection, "Metro", "Polegada", 2.54, 5.08); // Exemplo de conversão de 2.54 metros para polegadas
-
-        // Exiba os dados do banco de dados
+        InserirDados(collection, "Metro", "Polegada", 2.54, 5.08);
         MostrarDados(collection);
     }
 
-    // Método para inserir dados
     static void InserirDados(IMongoCollection<Conversao> collection, string medida1, string medida2, double valor, double resultado)
     {
         var conversao = new Conversao
@@ -54,7 +47,6 @@ class Program
     }
 }
 
-// Definição de classe para representar os dados de conversão
 class Conversao
 {
 
