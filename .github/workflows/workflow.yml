@@ -1,52 +1,19 @@
 name: build
 
-on:
-  push:
-  pull_request:
-    branches: [main]
-    paths:
-      - '**.cs'
-      - '**.csproj'
+on: [push]
 
 env:
-  DOTNET_VERSION: '6.0.401' # The .NET SDK version to use
+  DOTNET_VERSION: '7.0.x' # The .NET SDK version to use
 
 jobs:
-  build:
-
-    name: build-${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: Install dependencies
-        run: |
-            ls
-            cd ConversorDeUnidades
-            ls
-            dotnet restore
-      
-      - name: Build
-        run: |
-            cd ConversorDeUnidades
-            dotnet build --configuration Release --no-restore
 
   test:
-    name: test-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    needs: build
-
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, windows-latest]
+
+    # needs: build
 
     steps:
       - uses: actions/checkout@v3
@@ -59,13 +26,52 @@ jobs:
         run: |
             cd ConversorDeUnidades
             dotnet restore
-      
+        
+      - name: Run tests
+        run: |
+            cd ConversorDeUnidades
+            dotnet test /p:CollectCoverage=true /p:CoverletOutput=./TestResults/ /p:CoverletOutputFormat=lcov
+      - name: Install report generator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Generating report tests
+        run: |
+             cd ConversorDeUnidades
+             reportgenerator -reports:./src.Tests/TestResults/coverage.info -targetdir:./src.Tests/coverage_reports --reporttypes:Html
+      - name: Creating Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: TestResults
+          path: ConversorDeUnidades/src.Tests/coverage_reports/
+
+  build:
+    # needs: test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: Install dependencies
+        run: |
+            cd ConversorDeUnidades
+            dotnet restore
+                
       - name: Build
         run: |
             cd ConversorDeUnidades
-            dotnet build --configuration Release --no-restore
-
-      - name: Run Tests
-        run: |
-            cd ConversorDeUnidades
-            dotnet test --no-restore --verbosity normal
+            cd src.WinForms
+            dotnet restore
+            dotnet build
+            
+      - name: Creating Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Conversor de Unidades
+          path: ConversorDeUnidades/src.WinForms/bin/Debug/net7.0-windows/
