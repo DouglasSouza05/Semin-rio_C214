@@ -3,9 +3,11 @@ using System.Windows.Forms;
 using System.Drawing;
 using WinForms.Aplication;
 
-namespace WinForms.Aplication {
+namespace WinForms.Aplication
+{
 
-    public partial class MainForm : Form {
+    public partial class MainForm : Form
+    {
 
         Units units = new Units();
         Config config = new Config();
@@ -17,10 +19,23 @@ namespace WinForms.Aplication {
         private TextBox inputTextBox;
         private TextBox resultTextBox;
         private Label mainLabel, unitLabel, valueLabel, resultLabel;
-        public string mainUnit;
+        // public string mainUnit;
+        public string? mainUnit;
 
-        public MainForm() {
+        public MainForm()
+        {
             InitializeComponent();
+
+            mainComboBox = new ComboBox();
+            fromComboBox = new ComboBox();
+            toComboBox = new ComboBox();
+            converterButton = new Button();
+            inputTextBox = new TextBox();
+            resultTextBox = new TextBox();
+            mainLabel = new Label();
+            unitLabel = new Label();
+            valueLabel = new Label();
+            resultLabel = new Label();
 
             CreateComponents();
 
@@ -41,7 +56,8 @@ namespace WinForms.Aplication {
             converterButton.Click += ConverterButtonClick;
         }
 
-        private void CreateComponents() {
+        private void CreateComponents()
+        {
             mainComboBox = new ComboBox();
             fromComboBox = new ComboBox();
             toComboBox = new ComboBox();
@@ -54,28 +70,32 @@ namespace WinForms.Aplication {
             resultLabel = new Label();
         }
 
-        private void LabelTexts() {
+        private void LabelTexts()
+        {
             mainLabel.Text = "Selecione o tipo de Conversão desejada:";
             unitLabel.Text = "Selecione as Unidades:";
             valueLabel.Text = "Entre com o Valor a ser Convertido:";
             resultLabel.Text = "Resultado da Conversão:";
         }
 
-        private void LabelProperties() {
+        private void LabelProperties()
+        {
             config.SetLabelProperties(mainLabel);
             config.SetLabelProperties(unitLabel);
             config.SetLabelProperties(valueLabel);
             config.SetLabelProperties(resultLabel);
         }
 
-        private void ComboBoxClear() {
+        private void ComboBoxClear()
+        {
             fromComboBox.SelectedIndex = -1;
             toComboBox.SelectedIndex = -1;
             fromComboBox.Items.Clear();
             toComboBox.Items.Clear();
         }
 
-        private void ComboBoxLocations() {
+        private void ComboBoxLocations()
+        {
             mainLabel.Location = new Point(10, 10);
             mainComboBox.Location = new Point(10, 50);
             unitLabel.Location = new Point(10, 90);
@@ -88,7 +108,8 @@ namespace WinForms.Aplication {
             resultTextBox.Location = new Point(10, 330);
         }
 
-        private void ComboBoxAdd() {
+        private void ComboBoxAdd()
+        {
             Controls.Add(mainComboBox);
             Controls.Add(converterButton);
             Controls.Add(fromComboBox);
@@ -128,44 +149,59 @@ namespace WinForms.Aplication {
             }
         }
 
-        private void ConverterButtonClick(object? sender, EventArgs e) {
+        private void ConverterButtonClick(object? sender, EventArgs e)
+        {
 
             string fromUnit = fromComboBox.SelectedItem?.ToString() ?? "Default";
             string toUnit = toComboBox.SelectedItem?.ToString() ?? "Default";
 
             // Converte o valor de texto de entrada para um número. TryParse retorna um valor booleano caso haja sucesso (True)
-            if (double.TryParse(inputTextBox.Text, out double inputValue)) {
+            if (double.TryParse(inputTextBox.Text, out double inputValue))
+            {
                 // Chama o método ConvertUnits para realizar a conversão
 
                 double convertedValue = ConvertUnits(fromUnit, toUnit, inputValue);
                 // Exibe o resultado na TextBox de resultado na forma de string
 
                 resultTextBox.Text = (convertedValue < 1) ? convertedValue.ToString("F5") : convertedValue.ToString("F2");
-            } else {
+            }
+            else
+            {
                 resultTextBox.Text = "Valor Inválido!";
             }
         }
 
-        private double ConvertUnits(string fromUnit, string toUnit, double value) {
+        private double ConvertUnits(string fromUnit, string toUnit, double value)
+        {
 
             mainUnit = mainComboBox.SelectedItem?.ToString() ?? "Default";
 
-            if (mainUnit == null || fromUnit == null || toUnit == null) {
+            if (mainUnit == null || fromUnit == null || toUnit == null)
+            {
                 return value;
             }
 
-            if (mainUnit == "Temperature") {
+            if (mainUnit == "Temperature")
+            {
                 return units.TempConvertUnits(fromUnit, toUnit, value);
-            } else if (mainUnit == "Length") {
+            }
+            else if (mainUnit == "Length")
+            {
                 return units.LengthConvertUnits(fromUnit, toUnit, value);
 
-            } else if (mainUnit == "Time") {
+            }
+            else if (mainUnit == "Time")
+            {
                 return units.TimeConvertUnits(fromUnit, toUnit, value);
 
-            } else if (mainUnit == "Mass") {
+            }
+            else if (mainUnit == "Mass")
+            {
                 return units.MassConvertUnits(fromUnit, toUnit, value);
 
-            } else {
+            }
+            else
+            {
                 return value;
             }
         }
